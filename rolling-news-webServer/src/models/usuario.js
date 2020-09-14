@@ -3,7 +3,7 @@ import mongoose, {Schema} from 'mongoose';
 const usuarioSchema = new Schema({
     nombreUsuario : {
         type: String,
-        maxlength : 100,
+        maxlength : 30,
         required: true,
         unique : true
     },
@@ -21,6 +21,6 @@ const usuarioSchema = new Schema({
 
 );
 
-const Producto = mongoose.model('producto',productoSchema)
+const Usuario = mongoose.model('usuario',usuarioSchema)
 
-export default Producto;
+export default Usuario;
