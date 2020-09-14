@@ -30,4 +30,36 @@ usuarioctrl.getUsuarios = async (req, res) => {
   }
 };
 
+usuarioctrl.editarUsuario = async (req, res) => {
+    try {
+     await Usuario.findByIdAndUpdate(req.params.id, req.body)
+     res.status(200).json({mensaje : "usuario actualizado"}); 
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({mensaje : "Ocurrio un error"});
+      next(error);
+    }
+  };
+  
+  usuarioctrl.deleteUsuario = async (req, res) => {
+    try {
+      await Usuario.findByIdAndDelete(req.params.id)
+      res.status(200).json({mensaje : "se elimino el usuario"})
+    } catch (error) {
+      res.status(500).json({mensaje : "ocurrio un error"});
+      next(error);
+    }
+  };
+  
+  usuarioctrl.getUsuario = async (req, res) => {
+    try {
+      console.log(req.params.id)
+      const usuarioEncontrado = await Usuario.findById(req.params.id)
+      res.status(200).json(usuarioEncontrado)
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({mensaje : "Ocurrio un error"})
+    }
+  };
+
 export default usuarioctrl;
