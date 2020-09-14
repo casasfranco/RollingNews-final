@@ -1,0 +1,7 @@
+/*TIPOGRAFIA DEL SITIO*/
+
+@import url('https://fonts.googleapis.com/css2?family=Contrail+One');
+
+body {
+    font-family: 'Contrail One', cursive;
+}
