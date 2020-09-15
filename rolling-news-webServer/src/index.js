@@ -4,6 +4,7 @@ import cors from "cors";
 import path from "path";
 import "./database";
 import usuarioRouter from "./routes/usuario.routes";
+import noticiaRouter from "./routes/noticia.routes";
 const app = express();
 
 //Middlewares
@@ -20,6 +21,7 @@ app.set("port", process.env.PORT || 4000); //Si esxiste esa variable, se guardar
 
 //Defino rutas
 app.use('/api/usuario', usuarioRouter);
+app.use('/api/noticia', noticiaRouter);
 
 //Escuchar el puerto
 app.listen(app.get("port"), () => {

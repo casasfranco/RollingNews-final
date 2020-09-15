@@ -1,14 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
-const productoSchema = new Schema(
+const noticiaSchema = new Schema(
   {
-    nombreProd: { type: String, maxlength: 100, required: true, unique: true },
-    precioProd: { type: Number, maxlength: 10, required: true },
-    categoria: { type: String, maxlength: 100 },
+    volantaNoticia: { type: String, maxlength: 15, required: true},
+    tituloPrincipalNoticia: { type: Number, maxlength: 30, required: true },
+    copeteNoticia: { type: String, maxlength: 150, required: true },
+    urlImgPrincipalNoticia: { type: String, maxlength: 100, required: true },
+    cuerpoNoticia: { type: String, maxlength: 10000, required: true },
+    urlImgOpcionalNoticia: { type: String, maxlength: 100 },
+    autorNoticia: { type: String, maxlength: 20 },
+    categoriaNoticia: { type: String, maxlength: 20, required: true },
+    publicadaNoticia: { type: Boolean, default: true, required: true },
+    estadoNoticia: { type: Boolean, default: true, required: true }
   },
   { timestamps: true }
 );
 
-const Producto = mongoose.model("producto", productoSchema);
+const Noticia = mongoose.model("noticia", noticiaSchema);
 
-export default Producto;
+export default Noticia;
