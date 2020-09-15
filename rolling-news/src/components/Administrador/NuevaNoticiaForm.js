@@ -27,6 +27,12 @@ const NuevaNoticiaForm = () => {
               </Form.Label>
               <Form.Control type="text"/>
             </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label className>
+                <h5>Imagen opcional</h5>
+              </Form.Label>
+              <Form.Control type="text"/>
+            </Form.Group>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label><h5>Cuerpo de la noticia</h5></Form.Label>
               <Form.Control as="textarea" rows="3" />
