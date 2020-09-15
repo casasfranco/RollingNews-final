@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Bienvenida from "./components/Administrador/Bienvenida";
 import Usuarios from './components/Administrador/Usuarios';
 import NuevaNoticia from "./components/Administrador/NuevaNoticia";
+import Noticias from "./components/Administrador/Noticias";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Bienvenida></Bienvenida>
       <Usuarios></Usuarios>
       <NuevaNoticia></NuevaNoticia>
+      <Noticias></Noticias>
     </div>
   );
 }
