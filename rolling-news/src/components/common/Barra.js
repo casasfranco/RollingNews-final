@@ -1,11 +1,26 @@
-import React from 'react';
+import React,{useState} from 'react';
+
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Dropdown from "react-bootstrap/Dropdown";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+
 
 const Barra = () => {
+
+    const [show, setShow] = useState(false);
+ 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+
+
+
     return (
         <div>
               <Navbar
@@ -14,12 +29,51 @@ const Barra = () => {
         expand="lg"
         className="d-flex justify-content-between align-items-center"
       >
-        <Image id="logo" src="./logo-rolling1.jpg" rounded></Image>
+        <Image id="logo" src="./logo-rolling.jpg" rounded></Image>
 
         <Nav className="text-center" inline>
-          <Button className="mx-2 shadow" variant="dark">
+          <Button className="mx-2 shadow" variant="dark" onClick={handleShow} >
             Login
           </Button>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title className="text-center">Iniciar sesión</Modal.Title>
+              <Image
+                className="d-flex justify-content-center"
+                id="logo-login"
+                src="/logo-rolling.jpg"
+              ></Image>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Usuario</Form.Label>
+                  <Form.Control type="text" placeholder="Nombre de usuario" />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Contraseña</Form.Label>
+                  <Form.Control type="password" placeholder="Contraseña" />
+                </Form.Group>
+
+                <Button variant="dark" size="sm" type="submit">
+                  Ingresar
+                </Button>
+              </Form>
+            </Modal.Body>
+
+            <Modal.Footer className="mx-5">
+              <p>Ingresá con tu cuenta</p>
+              <Button variant="primary" size="lg" onClick={handleClose}>
+                <FontAwesomeIcon icon={faFacebook} />
+              </Button>
+              <Button variant="danger" size="lg" onClick={handleClose}>
+                <FontAwesomeIcon icon={faGoogle} />
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
 
           
           <Button className="mx-2 shadow" size="sm" variant="outline-dark">
