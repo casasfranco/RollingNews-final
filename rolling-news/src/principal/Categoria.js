@@ -17,32 +17,59 @@ const Categoria = () => {
 
   <thead>
     <tr>
-      <th>#</th>
+      <th>
+          #
+      </th>
       <th className="text-center">
     <h3>Categorias Disponibles</h3>
-
       </th>
-     
-      <th>Acciones</th>
+     <th className="text-center">
+     <h3>Acciones</h3>
+     </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1</td>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td className="text-center">Actualidad</td>
+      <td className="text-center">Editar</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>Jacob</td>
-      <td>@fat</td>
+      <td className="text-center">Politica</td>
+      <td className="text-center">Editar</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>Larry the Bird</td>
-      <td>Magacien</td>
-     
-    </tr>
+      <td className="text-center">Tecnologia</td>
+      <td className="text-center">Editar</td>
+     </tr>
+     <tr>
+      <td>3</td>
+      <td className="text-center">Deportes</td>
+      <td className="text-center">Editar</td>
+     </tr>
+     <tr>
+      <td>3</td>
+      <td className="text-center">Espectaculos</td>
+      <td className="text-center">Editar</td>
+     </tr>
+     <tr>
+      <td>3</td>
+      <td className="text-center">Economia</td>
+      <td className="text-center">Editar</td>
+     </tr>
+     <tr>
+      <td>3</td>
+      <td className="text-center">Salud</td>
+      <td className="text-center">Editar</td>
+     </tr>
+     <tr>
+      <td>8</td>
+      <td className="text-center">Fotografia</td>
+      <td className="text-center">Editar</td>
+     </tr>
+
   </tbody>
 </Table>
         </section>
