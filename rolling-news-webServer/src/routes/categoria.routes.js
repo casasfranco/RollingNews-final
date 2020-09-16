@@ -5,19 +5,19 @@ const router = Router();
 //destructuramiento
 const {
     getCategoria,
-    getNoticiaById,
-    crearNoticia,
-    editarNoticia,
-    deleteNoticia,
+    getCategoriaById,
+    crearCategoria,
+    editarCategoria,
+    deleteCategoria,
 } = categoriaController;
 
 
-router.route("/").get(getNoticia).post(crearNoticia);
+router.route("/").get(getCategoria).post(crearCategoria);
 
 router
   .route("/:id")
-  .get(getNoticiaById)
-  .put(editarNoticia)
-  .delete(deleteNoticia);
+  .get(getCategoriaById)
+  .put(editarCategoria)
+  .delete(deleteCategoria);
 
 export default router;
