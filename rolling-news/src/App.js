@@ -6,6 +6,7 @@ import Usuarios from './components/Administrador/Usuarios';
 import NuevaNoticia from "./components/Administrador/NuevaNoticia";
 import Noticias from "./components/Administrador/Noticias";
 
+
 function App() {
   return (
     <div>
@@ -13,6 +14,9 @@ function App() {
       <Usuarios></Usuarios>
       <NuevaNoticia></NuevaNoticia>
       <Noticias></Noticias>
+      
+
+      
     </div>
   );
 }
