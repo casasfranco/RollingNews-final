@@ -1,5 +1,4 @@
-import React,{useState} from 'react';
-
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
@@ -10,20 +9,15 @@ import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
-
 const Barra = () => {
+  const [show, setShow] = useState(false);
 
-    const [show, setShow] = useState(false);
- 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-
-
-    return (
-        <div>
-              <Navbar
+  return (
+    <div>
+      <Navbar
         bg=""
         variant="light"
         expand="lg"
@@ -32,7 +26,7 @@ const Barra = () => {
         <Image id="logo" src="./logo-rolling.jpg" rounded></Image>
 
         <Nav className="text-center" inline>
-          <Button className="mx-2 shadow" variant="dark" onClick={handleShow} >
+          <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
             Login
           </Button>
 
@@ -74,8 +68,6 @@ const Barra = () => {
             </Modal.Footer>
           </Modal>
 
-
-          
           <Button className="mx-2 shadow" size="sm" variant="outline-dark">
             Suscribirme
           </Button>
@@ -84,41 +76,37 @@ const Barra = () => {
 
       <hr />
 
-
       <Navbar expand="lg">
         <Navbar.Brand href="#home"></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="navbar-nav" className="justify-content-center">
           <Nav className="mx-2">
-          <Nav.Link href="#home">Actualidad</Nav.Link>
-          <Nav.Link href="#features">Espectáculos</Nav.Link>
-          <Nav.Link href="#pricing">Tecnología</Nav.Link>
-          <Nav.Link href="#pricing">Deportes</Nav.Link>
+            <Nav.Link href="#home">Actualidad</Nav.Link>
+            <Nav.Link href="#features">Espectáculos</Nav.Link>
+            <Nav.Link href="#pricing">Tecnología</Nav.Link>
+            <Nav.Link href="#pricing">Deportes</Nav.Link>
           </Nav>
 
           <Dropdown>
-          <Dropdown.Toggle
-            className="mr-5 shadow"
-            size="sm"
-            variant="danger"
-            id="dropdown-basic"
-          >
-            <b>Categorías</b>
-          </Dropdown.Toggle>
+            <Dropdown.Toggle
+              className="mr-5 shadow"
+              size="sm"
+              variant="danger"
+              id="dropdown-basic"
+            >
+              <b>Categorías</b>
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Economia</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Internacional</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Policiales</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-
-
-       </Navbar.Collapse>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Economia</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Internacional</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Policiales</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Navbar.Collapse>
       </Navbar>
-            
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Barra;
