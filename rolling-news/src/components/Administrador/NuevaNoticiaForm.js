@@ -41,7 +41,7 @@ const NuevaNoticiaForm = () => {
               <Form.Label>
                 <h5>Titulo</h5>
               </Form.Label>
-              <Form.Control required type="text" placeholder="titulo principal" />
+              <Form.Control  onBlur={setValidated} required type="text" placeholder="titulo principal"/>
               <Form.Control.Feedback>bien ahiii</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 Please choose a username.
