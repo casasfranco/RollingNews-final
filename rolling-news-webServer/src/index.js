@@ -3,7 +3,8 @@ import morgan from "morgan";
 import cors from "cors";
 import path from "path";
 import "./database";
-import productosRouter from "./routes/producto.routes";
+import usuarioRouter from "./routes/usuario.routes";
+import noticiaRouter from "./routes/noticia.routes";
 const app = express();
 
 //Middlewares
@@ -19,7 +20,8 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.set("port", process.env.PORT || 4000); //Si esxiste esa variable, se guardara en este objeto.
 
 //Defino rutas
-app.use('/api/cafeteria', productosRouter);
+app.use('/api/usuario', usuarioRouter);
+app.use('/api/noticia', noticiaRouter);
 
 //Escuchar el puerto
 app.listen(app.get("port"), () => {
