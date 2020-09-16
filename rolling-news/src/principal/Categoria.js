@@ -14,7 +14,6 @@ const Categoria = () => {
 
 <section className="container">
 <Table striped bordered hover>
-
   <thead>
     <tr>
       <th>
@@ -69,8 +68,7 @@ const Categoria = () => {
       <td className="text-center">Fotografia</td>
       <td className="text-center">Editar</td>
      </tr>
-
-  </tbody>
+</tbody>
 </Table>
         </section>
         </Fragment>
