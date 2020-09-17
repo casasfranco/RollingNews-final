@@ -5,18 +5,18 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-
 const CategoriaNueva = () => {
+
     return (
         <div>
 <Jumbotron>
   <Container>
-    <h1 className="text-center">Nueva Categoria</h1>
+    <h2 className="text-center">Nueva Categoria</h2>
   </Container>
 </Jumbotron>
 <Form className="container">
   <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Ingrese nueva categoria</Form.Label>
+    <Form.Label>Ingrese nueva categoria (*)</Form.Label>
     <Form.Control type="text" placeholder="Ej : Actualidad" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
