@@ -5,6 +5,7 @@ import Bienvenida from "./components/Administrador/Bienvenida";
 import Usuarios from './components/Administrador/Usuarios';
 import NuevaNoticia from "./components/Administrador/NuevaNoticia";
 import Noticias from "./components/Administrador/Noticias";
+import Footer from "./components/common/Footer";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Usuarios></Usuarios>
       <NuevaNoticia></NuevaNoticia>
       <Noticias></Noticias>
+      <Footer></Footer>
       
 
       
