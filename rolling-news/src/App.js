@@ -8,19 +8,21 @@ import NuevaNoticia from "./components/Administrador/NuevaNoticia";
 import Noticias from "./components/Administrador/Noticias";
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
-import CategoriaNueva from './components/principal/CategoriaNueva';
+import CategoriaNueva from './components/Administrador/CategoriaNueva';
+import Categoria from './components/Administrador/Categoria';
 
 
 function App() {
   return (
     <div>
+      <Header></Header>
       <Barra></Barra>
       <Bienvenida></Bienvenida>
       <Usuarios></Usuarios>
       <NuevaNoticia></NuevaNoticia>
       <Noticias></Noticias>
-      <Header></Header>
       <CategoriaNueva></CategoriaNueva>
+      <Categoria></Categoria>
       <Footer></Footer>
     </div>
   );

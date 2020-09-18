@@ -5,14 +5,8 @@ import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
 
 const NuevaNoticiaForm = () => {
-  //const [show, setShow] = useState(false);
-
-  //const handleClose = () => setShow(false);
-  //const handleShow = () => setShow(true);
-
   const { register, errors, handleSubmit } = useForm();
 
-  
   const onSubmit = (data, e) => {
     console.log(data);
     e.target.reset();
@@ -44,8 +38,7 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^[A-Za-z0-9]+$/i,
-                    message:
-                      "Ingrese un texto válido",
+                    message: "Ingrese un texto válido",
                   },
                 })}
               />
@@ -74,8 +67,7 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^[A-Za-z0-9]+$/i,
-                    message:
-                      "Ingrese un texto válido",
+                    message: "Ingrese un texto válido",
                   },
                 })}
               />
@@ -104,18 +96,22 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^[A-Za-z0-9]+$/i,
-                    message:
-                      "Ingrese una url",
+                    message: "Ingrese una url",
                   },
                 })}
               />
-              <span id="errorUrlImgPrincipalNoticia" className="text-danger mb-2">
+              <span
+                id="errorUrlImgPrincipalNoticia"
+                className="text-danger mb-2"
+              >
                 {errors?.urlImgPrincipalNoticia?.message}
               </span>
             </Form.Group>
             <Form.Group controlId="cuerpoNoticia">
               <Form.Label>Cuerpo de la noticia</Form.Label>
-              <Form.Control as="textarea" rows={10}
+              <Form.Control
+                as="textarea"
+                rows={10}
                 type="text"
                 placeholder="Desarrollo de la noticia..."
                 name="cuerpoNoticia"
@@ -134,8 +130,7 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^[A-Za-z0-9]+$/i,
-                    message:
-                      "Ingrese la información de la noticia",
+                    message: "Ingrese la información de la noticia",
                   },
                 })}
               />
@@ -164,12 +159,14 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^[A-Za-z0-9]+$/i,
-                    message:
-                      "Ingrese una url",
+                    message: "Ingrese una url",
                   },
                 })}
               />
-              <span id="errorUrlImgOpcionalNoticia" className="text-danger mb-2">
+              <span
+                id="errorUrlImgOpcionalNoticia"
+                className="text-danger mb-2"
+              >
                 {errors?.urlImgOpcionalNoticia?.message}
               </span>
             </Form.Group>
@@ -194,8 +191,7 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^[A-Za-z]+$/i,
-                    message:
-                      "Ingrese solo texto",
+                    message: "Ingrese solo texto",
                   },
                 })}
               />
@@ -224,8 +220,7 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^[A-Za-z]+$/i,
-                    message:
-                      "Ingrese solo texto",
+                    message: "Ingrese solo texto",
                   },
                 })}
               />
@@ -254,8 +249,7 @@ const NuevaNoticiaForm = () => {
                   },
                   pattern: {
                     value: /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i,
-                    message:
-                      "Ingrese una fecha válida",
+                    message: "Ingrese una fecha válida",
                   },
                 })}
               />
@@ -265,7 +259,7 @@ const NuevaNoticiaForm = () => {
             </Form.Group>
 
             <Button variant="dark" size="lg" type="submit">
-              Publicar 
+              Publicar
             </Button>
           </Form>
         </div>
