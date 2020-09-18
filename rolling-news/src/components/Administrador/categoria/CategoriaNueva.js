@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -7,12 +7,13 @@ import { useForm } from "react-hook-form";
 
 const CategoriaNueva = () => {
   const { register, errors, handleSubmit } = useForm();
+  const [datos, setDatos] = useState("")
 
   const onSubmit = (data, e) => {
     console.log(data);
+    setDatos(data);
     e.target.reset();
   };
-
   return (
     <div>
       <Jumbotron>
