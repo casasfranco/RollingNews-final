@@ -1,11 +1,11 @@
+
 import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-           
-            
-        </div>
+       <div className="text-center">
+        <h2>Esto es el footer</h2>
+       </div>
     );
 };
 
