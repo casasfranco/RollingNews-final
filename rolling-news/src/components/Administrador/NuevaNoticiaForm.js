@@ -12,6 +12,7 @@ const NuevaNoticiaForm = () => {
 
   const { register, errors, handleSubmit } = useForm();
 
+  
   const onSubmit = (data, e) => {
     console.log(data);
     e.target.reset();
@@ -42,13 +43,13 @@ const NuevaNoticiaForm = () => {
                     message: "Mínimo 5 carácteres",
                   },
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z0-9]+$/i,
                     message:
                       "Ingrese un texto válido",
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorTitulo" className="text-danger mb-2">
                 {errors?.tituloPrincipalNoticia?.message}
               </span>
             </Form.Group>
@@ -72,13 +73,13 @@ const NuevaNoticiaForm = () => {
                     message: "Mínimo 10 carácteres",
                   },
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z0-9]+$/i,
                     message:
                       "Ingrese un texto válido",
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorCopete" className="text-danger mb-2">
                 {errors?.copeteNoticia?.message}
               </span>
             </Form.Group>
@@ -102,13 +103,13 @@ const NuevaNoticiaForm = () => {
                     message: "Mínimo 5 carácteres",
                   },
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z0-9]+$/i,
                     message:
                       "Ingrese una url",
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorUrlImgPrincipalNoticia" className="text-danger mb-2">
                 {errors?.urlImgPrincipalNoticia?.message}
               </span>
             </Form.Group>
@@ -132,13 +133,13 @@ const NuevaNoticiaForm = () => {
                     message: "Mínimo 5 carácteres",
                   },
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z0-9]+$/i,
                     message:
-                      "Ingrese una url",
+                      "Ingrese la información de la noticia",
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorCuerpoNoticia" className="text-danger mb-2">
                 {errors?.cuerpoNoticia?.message}
               </span>
             </Form.Group>
@@ -162,13 +163,13 @@ const NuevaNoticiaForm = () => {
                     message: "Mínimo 5 carácteres",
                   },
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z0-9]+$/i,
                     message:
                       "Ingrese una url",
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorUrlImgOpcionalNoticia" className="text-danger mb-2">
                 {errors?.urlImgOpcionalNoticia?.message}
               </span>
             </Form.Group>
@@ -198,7 +199,7 @@ const NuevaNoticiaForm = () => {
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorCategoria" className="text-danger mb-2">
                 {errors?.categoriaNoticia?.message}
               </span>
             </Form.Group>
@@ -228,7 +229,7 @@ const NuevaNoticiaForm = () => {
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorAutor" className="text-danger mb-2">
                 {errors?.autorNoticia?.message}
               </span>
             </Form.Group>
@@ -252,13 +253,13 @@ const NuevaNoticiaForm = () => {
                     message: "Mínimo 5 carácteres",
                   },
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i,
                     message:
                       "Ingrese una fecha válida",
                   },
                 })}
               />
-              <span id="errorLogin" className="text-danger mb-2">
+              <span id="errorFecha" className="text-danger mb-2">
                 {errors?.publicadaNoticia?.message}
               </span>
             </Form.Group>
