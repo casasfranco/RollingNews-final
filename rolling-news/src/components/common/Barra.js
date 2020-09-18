@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
-
+import logo from '../../assets/logo-rolling.jpg' // relative path to image 
 const Barra = () => {
   const [show, setShow] = useState(false);
 
@@ -31,7 +31,7 @@ const Barra = () => {
         expand="lg"
         className="d-flex justify-content-between align-items-center"
       >
-        <Image id="logo" src="./logo-rolling.jpg" rounded></Image>
+        <Image id="logo" src={logo} rounded></Image>
 
         <Nav className="text-center">
           <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
