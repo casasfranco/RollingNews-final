@@ -3,13 +3,13 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Barra from "./components/common/Barra";
 import Bienvenida from "./components/Administrador/Bienvenida";
-import Usuarios from "./components/Administrador/Usuarios";
-import NuevaNoticia from "./components/Administrador/NuevaNoticia";
-import Noticias from "./components/Administrador/Noticias";
+import Usuarios from "./components/Administrador/usuario/Usuarios";
+import NuevaNoticia from "./components/Administrador/noticia/NuevaNoticia";
+import Noticias from "./components/Administrador/noticia/Noticias";
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
-import CategoriaNueva from './components/Administrador/CategoriaNueva';
-import Categoria from './components/Administrador/Categoria';
+import CategoriaNueva from './components/Administrador/categoria/CategoriaNueva';
+import Categoria from './components/Administrador/categoria/Categoria';
 
 
 function App() {

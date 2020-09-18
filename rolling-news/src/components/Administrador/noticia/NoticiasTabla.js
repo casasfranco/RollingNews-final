@@ -16,9 +16,7 @@ const NoticiasTabla = () => {
       <tbody className="bg-light text-dark">
         <tr>
           <td>1</td>
-          <td>
-            Tucumán superó los 8.000 casos de coronavirus
-          </td>
+          <td>Tucumán superó los 8.000 casos de coronavirus</td>
           <td>Juanito</td>
           <td>15/09/2020</td>
           <td>Editar / Borrar</td>

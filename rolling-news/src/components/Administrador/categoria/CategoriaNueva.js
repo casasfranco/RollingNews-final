@@ -49,7 +49,6 @@ const CategoriaNueva = () => {
           <span id="errorCategoriaNueva" className="text-danger mb-2">
             {errors?.categoriaNueva?.message}
           </span>
-          
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Descripcion (*)</Form.Label>
@@ -81,7 +80,6 @@ const CategoriaNueva = () => {
           <span id="errorTitulo" className="text-danger mb-2">
             {errors?.descripcionCategoria?.message}
           </span>
-          
         </Form.Group>
         <Button variant="info" type="submit">
           Añadir nueva categoria

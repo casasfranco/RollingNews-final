@@ -33,12 +33,12 @@ const Barra = () => {
       >
         <Image id="logo" src="./logo-rolling.jpg" rounded></Image>
 
-        <Nav className="text-center" inline>
+        <Nav className="text-center">
           <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
             Ingresar
           </Button>
 
-          <Modal show={show} onHide={handleClose}>
+          <Modal show={show} onHide={handleClose} backdrop="static" centered>
             <Modal.Header closeButton>
               <Modal.Title className="text-center">Iniciar sesión</Modal.Title>
               <Image
@@ -145,7 +145,7 @@ const Barra = () => {
             <Nav.Link href="#features">Espectáculos</Nav.Link>
             <Nav.Link href="#pricing">Tecnología</Nav.Link>
             <Nav.Link href="#pricing">Deportes</Nav.Link>
-            </Nav>
+          </Nav>
 
           <Dropdown>
             <Dropdown.Toggle
