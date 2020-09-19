@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -7,13 +7,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const CategoriaNueva = () => {
-  const { register, errors, handleSubmit } = useForm({
-    mode: "onBlur",
-    reValidateMode: "onBlur",
-  });
-  const CategoriaNueva = (props) => {
-    const { register, errors, handleSubmit } = useForm();
-  };
+  const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = async (data, e) => {
     //Modelo del objeto con el que vamos a trabajar (debe cumplir esta estructura)
@@ -22,6 +16,8 @@ const CategoriaNueva = () => {
       descripcionCat: data.descripcionCategoria,
       estadoCat: true,
     };
+
+    localStorage.setItem("token", JSON.stringify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwidXNlciI6IkZDQVNBUyIsImNvbnRyYXNlbmEiOiIxMjM0NTYiLCJpYXQiOjE2MDA0NTgxOTUsImV4cCI6NzYyMzM1NDMxMDIzfQ.02TX19uIcerOcUbM2jOFYfqNj1pSSlfY1GmodRW0_L0"));
 
     try {
       const cabecera = {
@@ -93,38 +89,6 @@ const CategoriaNueva = () => {
             {errors?.nombreCategoria?.message}
           </span>
         </Form.Group>
-        <Form.Group controlId="descripcionCategoria">
-          <Form.Label>Cuerpo de la noticia</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            type="text"
-            placeholder="Desarrollo de la noticia..."
-            name="descripcionCategoria"
-            ref={register({
-              required: {
-                value: true,
-                message: "Complete el campo requerido",
-              },
-              maxLength: {
-                value: 50,
-                message: "No más de 50 carácteres",
-              },
-              minLength: {
-                value: 3,
-                message: "Mínimo 5 carácteres",
-              },
-              pattern: {
-                value: /^[A-Za-z0-9]+$/i,
-                message: "Ingrese la información de la categoria",
-              },
-            })}
-          />
-          <span id="errorCuerpoNoticia" className="text-danger mb-2">
-            {errors?.descripcionCategoria?.message}
-          </span>
-        </Form.Group>
-
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Descripcion (*)</Form.Label>
           <Form.Control
@@ -139,8 +103,8 @@ const CategoriaNueva = () => {
                 message: "Agregue una descripcion de esta categoria",
               },
               maxLength: {
-                value: 30,
-                message: "No más de 30 carácteres",
+                value: 50,
+                message: "No más de 50 carácteres",
               },
               minLength: {
                 value: 5,
