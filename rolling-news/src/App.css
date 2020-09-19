@@ -1,0 +1,12 @@
+#logo{
+    width: 300px;
+    height: 140px;
+}
+#logo-login{
+    width: 200px;
+    height: 120px;
+    opacity: 0.5;
+}
+#errorlogin{
+    font-size: 12px;
+}

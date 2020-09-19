@@ -8,7 +8,7 @@ const NuevaNoticia = () => {
       <Jumbotron className="text-center">
         <h1>Nueva Noticia</h1>
       </Jumbotron>
-        <NuevaNoticiaForm></NuevaNoticiaForm>
+      <NuevaNoticiaForm></NuevaNoticiaForm>
     </Fragment>
   );
 };
