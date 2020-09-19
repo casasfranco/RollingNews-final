@@ -26,7 +26,7 @@ const LineaCategoria = (props) => {
           const resultado = await fetch(
             `http://localhost:4000/api/categoria/${id}`,
             {
-              method: "PUT",
+              method: "DELETE",
               headers: {
                 "Content-type": "application/json",
                 token: localStorage.getItem("token"),
@@ -41,7 +41,6 @@ const LineaCategoria = (props) => {
               "success"
             );
           }
-
           //Recargar la lista de categorias
           props.setRecargarCategorias(true);
         } catch (error) {
