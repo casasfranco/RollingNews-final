@@ -3,28 +3,55 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Barra from "./components/common/Barra";
 import Bienvenida from "./components/Administrador/Bienvenida";
-import Usuarios from "./components/Administrador/Usuarios";
-import NuevaNoticia from "./components/Administrador/NuevaNoticia";
-import Noticias from "./components/Administrador/Noticias";
-import Footer from './components/common/Footer';
-import Header from './components/common/Header';
-import CategoriaNueva from './components/Administrador/CategoriaNueva';
-import Categoria from './components/Administrador/Categoria';
-
+import Usuarios from "./components/Administrador/usuario/Usuarios";
+import Noticias from "./components/Administrador/noticia/Noticias";
+import Footer from "./components/common/Footer";
+import Header from "./components/common/Header";
+import CategoriaNueva from "./components/Administrador/categoria/CategoriaNueva";
+import Categoria from "./components/Administrador/categoria/Categoria";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header></Header>
       <Barra></Barra>
-      <Bienvenida></Bienvenida>
-      <Usuarios></Usuarios>
-      <NuevaNoticia></NuevaNoticia>
-      <Noticias></Noticias>
-      <CategoriaNueva></CategoriaNueva>
-      <Categoria></Categoria>
+      <Switch>
+        <Route exact path="/admin">
+          <Bienvenida></Bienvenida>
+        </Route>
+        <Route
+          exact
+          path="/admin/categorias"
+          render={() => (
+            <div>
+              <Categoria></Categoria>
+            </div>
+          )}
+        ></Route>
+
+        <Route exact path="/admin/categorias/nueva">
+          <CategoriaNueva></CategoriaNueva>
+        </Route>
+
+        <Route exact path="/admin/usuarios">
+          <Usuarios></Usuarios>
+        </Route>
+
+        <Route exact path="/admin/usuarios/nuevo">
+          {/* <CategoriaNueva></CategoriaNueva> */}
+        </Route>
+
+        <Route exact path="/admin/noticias">
+          <Noticias></Noticias>
+        </Route>
+
+        <Route exact path="/admin/noticias/nueva">
+          <Noticias></Noticias>
+        </Route>
+      </Switch>
       <Footer></Footer>
-    </div>
+    </Router>
   );
 }
 
