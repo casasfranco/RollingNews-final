@@ -17,8 +17,6 @@ const CategoriaNueva = () => {
       estadoCat: true,
     };
 
-    localStorage.setItem("token", JSON.stringify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwidXNlciI6IkZDQVNBUyIsImNvbnRyYXNlbmEiOiIxMjM0NTYiLCJpYXQiOjE2MDA0NTgxOTUsImV4cCI6NzYyMzM1NDMxMDIzfQ.02TX19uIcerOcUbM2jOFYfqNj1pSSlfY1GmodRW0_L0"));
-
     try {
       const cabecera = {
         method: "POST",
