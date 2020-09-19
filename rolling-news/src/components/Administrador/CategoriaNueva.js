@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 
 const CategoriaNueva = () => {
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm({mode:'onBlur', reValidateMode:'onBlur'});
 
   const onSubmit = (data, e) => {
     console.log(data);
@@ -49,40 +49,39 @@ const CategoriaNueva = () => {
           <span id="errorCategoriaNueva" className="text-danger mb-2">
             {errors?.categoriaNueva?.message}
           </span>
-          
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Descripcion (*)</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows="3"
-            type="text"
-            placeholder="Esta categoria tratará sobre...."
-            name="descripcionCategoria"
-            ref={register({
-              required: {
-                value: true,
-                message: "Agregue una descripcion de esta categoria",
-              },
-              maxLength: {
-                value: 30,
-                message: "No más de 30 carácteres",
-              },
-              minLength: {
-                value: 5,
-                message: "Mínimo 5 carácteres",
-              },
-              pattern: {
-                value: /^[A-Za-z]+$/i,
-                message: "Agregue una descripción de esta categoria",
-              },
-            })}
-          />
-          <span id="errorTitulo" className="text-danger mb-2">
-            {errors?.descripcionCategoria?.message}
-          </span>
-          
-        </Form.Group>
+          </Form.Group>
+           <Form.Group controlId="descripcionCategoria">
+              <Form.Label>Cuerpo de la noticia</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                type="text"
+                placeholder="Desarrollo de la noticia..."
+                name="descripcionCategoria"
+                ref={register({
+                  required: {
+                    value: true,
+                    message: "Complete el campo requerido",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "No más de 50 carácteres",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "Mínimo 5 carácteres",
+                  },
+                  pattern: {
+                    value: /^[A-Za-z0-9]+$/i,
+                    message: "Ingrese la información de la categoria",
+                  },
+                })}
+              />
+              <span id="errorCuerpoNoticia" className="text-danger mb-2">
+                {errors?.descripcionCategoria?.message}
+              </span>
+            </Form.Group>
+        
         <Button variant="info" type="submit">
           Añadir nueva categoria
         </Button>
