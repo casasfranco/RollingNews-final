@@ -1,9 +1,44 @@
-import React, { Fragment } from "react";
-import Table from "react-bootstrap/Table";
+import React, { Fragment, useState, useEffect } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import CategoriaTabla from "./CategoriaTabla";
 
 const Categoria = () => {
+  const [categoriasAPI, setCategoriasAPI] = useState([]);
+  const [recargarCategorias, setRecargarCategorias] = useState(true);
+
+  useEffect(() => {
+    if (recargarCategorias) {
+      consultarAPI();
+      setRecargarCategorias(false);
+      console.log(categoriasAPI);
+    }
+    consultarAPI();
+  }, [recargarCategorias]);
+
+  const consultarAPI = async () => {
+    try {
+      const cabecera = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+        // body: JSON.stringify({token:localStorage.getItem('token')}),
+      };
+      const respuesta = await fetch(
+        `http://localhost:4000/api/categoria/`,
+        cabecera
+      );
+      const resultado = await respuesta.json();
+      setCategoriasAPI(resultado);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Fragment>
       <Jumbotron fluid>
@@ -13,61 +48,17 @@ const Categoria = () => {
       </Jumbotron>
 
       <section className="container">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th className="text-center">
-                <h3>Categorias Disponibles</h3>
-              </th>
-              <th className="text-center">
-                <h3>Acciones</h3>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td className="text-center">Actualidad</td>
-              <td className="text-center">Editar</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td className="text-center">Politica</td>
-              <td className="text-center">Editar</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td className="text-center">Tecnologia</td>
-              <td className="text-center">Editar</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td className="text-center">Deportes</td>
-              <td className="text-center">Editar</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td className="text-center">Espectaculos</td>
-              <td className="text-center">Editar</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td className="text-center">Economia</td>
-              <td className="text-center">Editar</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td className="text-center">Salud</td>
-              <td className="text-center">Editar</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td className="text-center">Fotografia</td>
-              <td className="text-center">Editar</td>
-            </tr>
-          </tbody>
-        </Table>
+        <div className="mb-3">
+          <Link to="/admin/categorias/nueva">
+            <Button variant="info" size="lg">
+              Nueva categoria
+            </Button>{" "}
+          </Link>
+        </div>
+        <CategoriaTabla
+          categoriasAPI={categoriasAPI}
+          setRecargarCategorias={setRecargarCategorias}
+        ></CategoriaTabla>
       </section>
     </Fragment>
   );

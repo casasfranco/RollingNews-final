@@ -4,16 +4,53 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
-const CategoriaNueva = () => {
+const CategoriaNueva = (props) => {
   const { register, errors, handleSubmit } = useForm();
-  const [datos, setDatos] = useState("")
 
-  const onSubmit = (data, e) => {
-    console.log(data);
-    setDatos(data);
+  const onSubmit = async (data, e) => {
+    //Modelo del objeto con el que vamos a trabajar (debe cumplir esta estructura)
+    const categoria = {
+      nombreCat: data.nombreCategoria,
+      descripcionCat: data.descripcionCategoria,
+      estadoCat: true,
+    };
+
+    try {
+      const cabecera = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "token": localStorage.getItem("token")
+        },
+        body: JSON.stringify(categoria),
+      };
+
+      const resultado = await fetch(
+        "http://localhost:4000/api/categoria/",
+        cabecera  
+      );
+      console.log(resultado);
+      //Compruebo la respuesta
+      if (resultado.status === 200) {
+        Swal.fire(
+          "La categoria creada",
+          "La categoria se creo correctamente",
+          "success"
+        );
+      }
+      //redireccionar
+      // browserHistory.push("/admin/categorias");
+      // props.history.push("/admin/categorias");
+      console.log();
+
+    } catch (error) {
+      console.log(error);
+    }
     e.target.reset();
   };
+
   return (
     <div>
       <Jumbotron>
@@ -27,7 +64,7 @@ const CategoriaNueva = () => {
           <Form.Control
             type="text"
             placeholder="Ej : Actualidad"
-            name="categoriaNueva"
+            name="nombreCategoria"
             ref={register({
               required: {
                 value: true,
@@ -42,13 +79,13 @@ const CategoriaNueva = () => {
                 message: "Mínimo 5 carácteres",
               },
               pattern: {
-                value: /^[A-Za-z]+$/i,
+                value: /^[A-Za-z0-9\s]+$/g,
                 message: "Ingrese una opcion válida",
               },
             })}
           />
           <span id="errorCategoriaNueva" className="text-danger mb-2">
-            {errors?.categoriaNueva?.message}
+            {errors?.nombreCategoria?.message}
           </span>
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -73,7 +110,7 @@ const CategoriaNueva = () => {
                 message: "Mínimo 5 carácteres",
               },
               pattern: {
-                value: /^[A-Za-z]+$/i,
+                value: /^[A-Za-z0-9\s]+$/g,
                 message: "Agregue una descripción de esta categoria",
               },
             })}
