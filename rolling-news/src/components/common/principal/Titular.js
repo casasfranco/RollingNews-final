@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
+import Comentarios from './Comentarios';
+
 
 
 const Titular = () => {
@@ -37,12 +39,12 @@ Ayer jueves, la ministra de Salud, Rossana Chahla, acompañada por el secretario
 
 Nos convocó la señora ministra de Salud al secretario de gobierno de la Municipalidad y a mí para tratar, sobre todo, el hecho de cómo restringir el tránsito en la ciudad. Estamos muy preocupados porque sabemos que el virus circula con las personas y esto es muy intenso en el microcentro sobre todo. Estuvimos hablando sobre algunas estrategias que vamos a implementar pensando en el 21 de septiembre por el Día del Estudiante, cómo restringir la circulación y cómo vamos a actuar para los festejos”.</p>
  
- <strong>Nota Elabora por Lucas Gutierrez.</strong>
+ <strong>Nota Elaborada por Lucas Gutierrez.</strong>
 </section>
 
 <div className="container mt-5">
   <h4>Comentarios</h4>
- 
+ <Comentarios></Comentarios>
 </div>
  
 </Jumbotron>
