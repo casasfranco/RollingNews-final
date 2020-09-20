@@ -31,7 +31,6 @@ const CategoriaNueva = (props) => {
         "https://rolling-news-servidor.herokuapp.com/api/categoria/",
         cabecera  
       );
-      console.log(resultado);
       //Compruebo la respuesta
       if (resultado.status === 200) {
         Swal.fire(
@@ -43,7 +42,6 @@ const CategoriaNueva = (props) => {
       //redireccionar
       // browserHistory.push("/admin/categorias");
       // props.history.push("/admin/categorias");
-      console.log();
 
     } catch (error) {
       console.log(error);

@@ -13,7 +13,6 @@ const Categoria = () => {
     if (recargarCategorias) {
       consultarAPI();
       setRecargarCategorias(false);
-      console.log(categoriasAPI);
     }
     consultarAPI();
   }, [recargarCategorias]);

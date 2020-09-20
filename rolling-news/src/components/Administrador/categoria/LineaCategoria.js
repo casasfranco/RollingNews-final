@@ -9,7 +9,6 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const LineaCategoria = (props) => {
   const eliminarCategoria = (id) => {
-    console.log(id);
 
     Swal.fire({
       title: "¿Esta seguro de eliminar la categoria?",
@@ -33,7 +32,6 @@ const LineaCategoria = (props) => {
               },
             }
           );
-          console.log(resultado);
           if (resultado.status === 200) {
             Swal.fire(
               "Categoria eliminada!",
