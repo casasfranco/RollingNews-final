@@ -24,7 +24,7 @@ const LineaCategoria = (props) => {
         //Elimino la categoria
         try {
           const resultado = await fetch(
-            `http://localhost:4000/api/categoria/${id}`,
+            `https://rolling-news-servidor.herokuapp.com/api/categoria/${id}`,
             {
               method: "PUT",
               headers: {

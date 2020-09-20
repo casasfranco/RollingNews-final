@@ -28,7 +28,7 @@ const CategoriaNueva = (props) => {
       };
 
       const resultado = await fetch(
-        "http://localhost:4000/api/categoria/",
+        "https://rolling-news-servidor.herokuapp.com/api/categoria/",
         cabecera  
       );
       console.log(resultado);

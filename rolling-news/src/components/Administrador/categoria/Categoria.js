@@ -29,7 +29,7 @@ const Categoria = () => {
         // body: JSON.stringify({token:localStorage.getItem('token')}),
       };
       const respuesta = await fetch(
-        `http://localhost:4000/api/categoria/`,
+        `https://rolling-news-servidor.herokuapp.com/api/categoria/`,
         cabecera
       );
       const resultado = await respuesta.json();
