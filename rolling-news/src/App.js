@@ -10,6 +10,7 @@ import Header from "./components/common/Header";
 import CategoriaNueva from "./components/Administrador/categoria/CategoriaNueva";
 import Categoria from "./components/Administrador/categoria/Categoria";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Suscripcion from "./components/Administrador/usuario/Suscripcion";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
         </Route>
 
         <Route exact path="/admin/usuarios/nuevo">
-          {/* <CategoriaNueva></CategoriaNueva> */}
+          <Suscripcion></Suscripcion>
         </Route>
 
         <Route exact path="/admin/noticias">

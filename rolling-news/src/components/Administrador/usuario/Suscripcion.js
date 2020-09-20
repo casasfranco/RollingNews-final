@@ -9,12 +9,52 @@ import { useForm } from "react-hook-form";
 
 const Suscripcion = () => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) =>
-    Swal.fire(
-      "Gracias!",
-      "Sus datos fueron enviados y pronto nos contactaremos!",
-      "success"
-    );
+  const onSubmit = async (data, e) => {
+    const usuario = {
+      nombre: data.nombre,
+      apellido: data.apellido,
+      nombreUsuario: data.nombreUsuario,
+      passUsuario: data.passUsuario,
+      direccionUsuario: data.direccionUsuario,
+      localidadUsuario: data.localidadUsuario,
+      cpUsuario: data.cpUsuario,
+      numTelefonoUsuario: data.numTelefonoUsuario,
+      perfilUsuario: true,
+      estadoUsuario: false,
+    }
+    try {
+      const cabecera = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+        body: JSON.stringify(usuario),
+      };
+     
+      const resultado = await fetch(
+        "https://rolling-news-servidor.herokuapp.com/api/usuario/",
+        cabecera
+      );
+      //Compruebo la respuesta
+      if (resultado.status === 200) {
+        Swal.fire(
+          "Gracias!",
+          "Sus datos fueron enviados y pronto nos contactaremos!",
+          "success"
+        );
+     
+      }
+      //redireccionar
+      // browserHistory.push("/admin/categorias");
+      // props.history.push("/admin/categorias");
+    } catch (error) {
+      console.log(error);
+    }
+    e.target.reset();
+  };
+
+ 
 
   return (
     <div>
