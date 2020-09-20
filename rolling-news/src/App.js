@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-<<<<<<< HEAD
 import "bootstrap/dist/css/bootstrap.min.css";
 import Barra from "./components/common/Barra";
 import Bienvenida from "./components/Administrador/Bienvenida";
@@ -53,20 +52,6 @@ function App() {
       </Switch>
       <Footer></Footer>
     </Router>
-=======
-import "bootstrap/dist/css/bootstrap.min.css"
-import Suscripcion from "./components/Administrador/Suscripcion.js"
-import Footer from "./components/common/Footer.js"
-
-
-function App() {
-  return (
-    <div>
-      <Suscripcion />
-      <Footer />
-      
-    </div>
->>>>>>> origin/clienteFront-PrincipalMaquetado-Suscripcion
   );
 }
 
