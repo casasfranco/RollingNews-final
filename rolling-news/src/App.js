@@ -13,6 +13,8 @@ import Categoria from "./components/Administrador/categoria/Categoria";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Suscripcion from "./components/Administrador/usuario/Suscripcion";
 import PaginaError from "./components/common/PaginaError";
+import  Titular from "./components/principal/Titular";
+import Comentarios from './components/principal/Comentarios';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
     <Router>
       <Header></Header>
       <Barra></Barra>
+      <Titular></Titular>
+      <Comentarios></Comentarios>
       <Switch>
         <Route exact path="/admin">
           <Bienvenida></Bienvenida>
