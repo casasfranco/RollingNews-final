@@ -51,7 +51,7 @@ const Noticias = () => {
       <section className="container">
         <div className="mb-3">
           <Link to="/admin/noticias/nueva">
-            <Button variant="info" size="lg">
+            <Button variant="dark" size="lg">
               Nueva noticia
             </Button>{" "}
           </Link>

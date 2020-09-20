@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-
 const LineaNoticia = (props) => {
   const eliminarNoticia = (id) => {
     console.log(id);
@@ -56,32 +55,26 @@ const LineaNoticia = (props) => {
       <ListGroup.Item className="d-flex justify-content-between">
         <div className="row">
           <div className="ml-3">
-            <p>{props.noticia.volantaNoticia}</p>
-            <p>{props.noticia.tituloPrincipalNoticia}</p>
+            <h5>Titulo: {props.noticia.tituloPrincipalNoticia}</h5>
             <p>
               <span className="ml-3 text-muted">
-                Descripción: {props.noticia.copeteNoticia}
+                <b>Autor de la nota:</b> {props.noticia.autorNoticia}
               </span>
+
               <span className="ml-3 text-muted">
-                Descripción: {props.noticia.urlImgPrincipalNoticia}
-              </span>
-              <span className="ml-3 text-muted">
-                Descripción: {props.noticia.cuerpoNoticia}
-              </span>
-              <span className="ml-3 text-muted">
-                Descripción: {props.noticia.urlImgOpcionalNoticia}
-              </span>
-              <span className="ml-3 text-muted">
-                Descripción: {props.noticia.autorNoticia}
-              </span>
-            
-              <span className="ml-3 text-muted">
-                Descripción: {props.noticia.categoriaNoticia}
+                <b>Categoria:</b> {props.noticia.categoriaNoticia}
               </span>
             </p>
           </div>
         </div>
-        <div>
+        <div className="d-flex align-items-center">
+          <Button
+            className="mx-3"
+            variant="warning"
+            //onClick={() => editarNoticia(props.noticia._id)}
+          >
+            <FontAwesomeIcon icon={faEdit} />
+          </Button>
           <Button
             variant="danger"
             onClick={() => eliminarNoticia(props.noticia._id)}
@@ -93,6 +86,5 @@ const LineaNoticia = (props) => {
     </div>
   );
 };
-
 
 export default LineaNoticia;
