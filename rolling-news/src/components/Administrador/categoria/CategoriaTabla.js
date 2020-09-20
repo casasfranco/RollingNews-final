@@ -14,7 +14,7 @@ const CategoriaTabla = (props) => {
             setRecargarCategorias={props.setRecargarCategorias}
           ></LineaCategoria>
         ))}
-      </ListGroup>
+      </ListGroup> 
     </section>
   );
 };

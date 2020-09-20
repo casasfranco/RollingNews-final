@@ -56,10 +56,27 @@ const LineaNoticia = (props) => {
       <ListGroup.Item className="d-flex justify-content-between">
         <div className="row">
           <div className="ml-3">
-            <p>{props.noticia.tituloPN}</p>
+            <p>{props.noticia.volantaNoticia}</p>
+            <p>{props.noticia.tituloPrincipalNoticia}</p>
             <p>
               <span className="ml-3 text-muted">
-                Descripción: {props.noticia.copeteNot}
+                Descripción: {props.noticia.copeteNoticia}
+              </span>
+              <span className="ml-3 text-muted">
+                Descripción: {props.noticia.urlImgPrincipalNoticia}
+              </span>
+              <span className="ml-3 text-muted">
+                Descripción: {props.noticia.cuerpoNoticia}
+              </span>
+              <span className="ml-3 text-muted">
+                Descripción: {props.noticia.urlImgOpcionalNoticia}
+              </span>
+              <span className="ml-3 text-muted">
+                Descripción: {props.noticia.autorNoticia}
+              </span>
+            
+              <span className="ml-3 text-muted">
+                Descripción: {props.noticia.categoriaNoticia}
               </span>
             </p>
           </div>

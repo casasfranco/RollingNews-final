@@ -14,16 +14,16 @@ const NuevaNoticia = () => {
   const onSubmit = async (data, e) => {
    //Modelo del objeto con el que vamos a trabajar (debe cumplir esta estructura)
    const noticia = {
-    volantaNot: data.volantaNoticia,
-    tituloPN: data.tituloPrincipalNoticia,
-    copeteNot: data.copeteNoticia,
-    imgPrincipal: data.urlImgPrincipalNoticia,
-    cuerpoNot: data.CuerpoNoticia,
-    imgOpcional: data.urlImgOpcionalNoticia,
-    autorNot: data.autorNoticia,
-    categoriaNot: data.categoriaNoticia,
-    fechaPub: data.publicadaNoticia,
-    estadoNot: true,
+    volantaNoticia: data.volantaNoticia,
+    tituloPrincipalNoticia: data.tituloPrincipalNoticia,
+    copeteNoticia: data.copeteNoticia,
+    urlImgPrincipalNoticia: data.urlImgPrincipalNoticia,
+    cuerpoNoticia: data.cuerpoNoticia,
+    urlImgOpcionalNoticia: data.urlImgOpcionalNoticia,
+    autorNoticia: data.autorNoticia,
+    categoriaNoticia: data.categoriaNoticia,
+    publicadaNoticia: true,
+    estadoNoticia: true
   };
 
   try {
@@ -81,8 +81,8 @@ const NuevaNoticia = () => {
                     message: "Ingrese un antetitulo",
                   },
                   maxLength: {
-                    value: 30,
-                    message: "No más de 30 carácteres",
+                    value: 15,
+                    message: "No más de 15 carácteres",
                   },
                   minLength: {
                     value: 5,
@@ -94,7 +94,7 @@ const NuevaNoticia = () => {
                   },
                 })}
               />
-              <span id="errorTitulo" className="text-danger mb-2">
+              <span id="errorVolanta" className="text-danger mb-2">
                 {errors?.volantaNoticia?.message}
               </span>
             </Form.Group>
@@ -168,8 +168,8 @@ const NuevaNoticia = () => {
                     message: "Agregue una imagen de principal",
                   },
                   maxLength: {
-                    value: 200,
-                    message: "No más de 200 carácteres",
+                    value: 100,
+                    message: "No más de 100 carácteres",
                   },
                   minLength: {
                     value: 3,
@@ -311,14 +311,6 @@ const NuevaNoticia = () => {
                   required: {
                     value: true,
                     message: "Ingrese una fecha válida",
-                  },
-                  maxLength: {
-                    value: 20,
-                    message: "No más de 20 carácteres!",
-                  },
-                  minLength: {
-                    value: 3,
-                    message: "Mínimo 5 carácteres",
                   },
                   pattern: {
                     value: /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i,

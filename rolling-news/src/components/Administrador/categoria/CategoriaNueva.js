@@ -14,7 +14,7 @@ const CategoriaNueva = () => {
     const categoria = {
       nombreCat: data.nombreCategoria,
       descripcionCat: data.descripcionCategoria,
-      estadoCat: true,
+      estadoCat: true, 
     };
 
     try {
