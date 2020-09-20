@@ -26,7 +26,7 @@ const LineaCategoria = (props) => {
           const resultado = await fetch(
             `https://rolling-news-servidor.herokuapp.com/api/categoria/${id}`,
             {
-              method: "PUT",
+              method: "DELETE",
               headers: {
                 "Content-type": "application/json",
                 token: localStorage.getItem("token"),
@@ -41,7 +41,6 @@ const LineaCategoria = (props) => {
               "success"
             );
           }
-
           //Recargar la lista de categorias
           props.setRecargarCategorias(true);
         } catch (error) {

@@ -9,7 +9,10 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import logo from '../../assets/logo-rolling.jpg' // relative path to image 
+import logo from "../../assets/logo-rolling.jpg"; // relative path to image
+import $ from "jquery";
+import Swal from "sweetalert2";
+
 const Barra = () => {
   const [show, setShow] = useState(false);
 
@@ -18,9 +21,53 @@ const Barra = () => {
 
   const { register, errors, handleSubmit } = useForm();
 
-  const onSubmit = (data, e) => {
-    console.log(data);
+  const onSubmit = async (data, e) => {
+    //Login de los datos validados.
+
+    const usuario = {
+      nombreUsuario: data.nombreUsuario,
+      passUsuario: data.passUsuario,
+    };
+
+    try {
+      const cabecera = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(usuario),
+      };
+
+      const resultado = await fetch(
+        "http://localhost:4000/api/autenticar/",
+        cabecera
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then((response) => {
+          if (response.ok) {
+            localStorage.setItem("token", response.token);
+            Swal.fire(
+              "Bienvenido!!!",
+              "Iniciaste sesion correctamente",
+              "success"
+            );
+            handleClose();
+            // console.log(resultado.body);
+          } else {
+            Swal.fire(
+              "Opss!!!",
+              "Contraseña o nomnbre de usuario incorrectos",
+              "error"
+            );
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
     e.target.reset();
+    // $(document.getElementById("loginModal")).hide();
   };
 
   return (
@@ -38,7 +85,13 @@ const Barra = () => {
             Ingresar
           </Button>
 
-          <Modal show={show} onHide={handleClose} backdrop="static" centered>
+          <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            centered
+            id="loginModal"
+          >
             <Modal.Header closeButton>
               <Modal.Title className="text-center">Iniciar sesión</Modal.Title>
               <Image
@@ -100,9 +153,9 @@ const Barra = () => {
                         message: "Mínimo 6 carácteres",
                       },
                       pattern: {
-                        value: /^[A-Za-z]+$/i,
+                        value: /^[A-Za-z0-9\s]+$/g,
                         message:
-                          "Solo puede contener letras mayúsculas o minúsculas",
+                          "Solo puede contener letras mayúsculas o minúsculas y numeros",
                       },
                     })}
                   />
