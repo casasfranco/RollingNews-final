@@ -7,8 +7,9 @@ import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-const LineaCategoria = (props) => {
-  const eliminarCategoria = (id) => {
+
+const LineaNoticia = (props) => {
+  const eliminarNoticia = (id) => {
     console.log(id);
 
     Swal.fire({
@@ -24,7 +25,7 @@ const LineaCategoria = (props) => {
         //Elimino la categoria
         try {
           const resultado = await fetch(
-            `http://localhost:4000/api/categoria/${id}`,
+            `http://localhost:4000/api/noticia/${id}`,
             {
               method: "DELETE",
               headers: {
@@ -42,12 +43,12 @@ const LineaCategoria = (props) => {
             );
           }
           //Recargar la lista de categorias
-          props.setRecargarCategorias(true);
+          props.setRecargarNoticias(true);
         } catch (error) {
           console.log(error);
         }
       }
-    }); 
+    });
   };
 
   return (
@@ -55,10 +56,10 @@ const LineaCategoria = (props) => {
       <ListGroup.Item className="d-flex justify-content-between">
         <div className="row">
           <div className="ml-3">
-            <p>{props.categoria.nombreCat}</p>
+            <p>{props.noticia.tituloPN}</p>
             <p>
               <span className="ml-3 text-muted">
-                Descripción: {props.categoria.descripcionCat}
+                Descripción: {props.noticia.copeteNot}
               </span>
             </p>
           </div>
@@ -66,7 +67,7 @@ const LineaCategoria = (props) => {
         <div>
           <Button
             variant="danger"
-            onClick={() => eliminarCategoria(props.categoria._id)}
+            onClick={() => eliminarNoticia(props.noticia._id)}
           >
             <FontAwesomeIcon icon={faTrash} />
           </Button>
@@ -76,4 +77,5 @@ const LineaCategoria = (props) => {
   );
 };
 
-export default LineaCategoria;
+
+export default LineaNoticia;

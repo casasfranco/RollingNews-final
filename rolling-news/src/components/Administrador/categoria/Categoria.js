@@ -11,7 +11,7 @@ const Categoria = () => {
 
   useEffect(() => {
     if (recargarCategorias) {
-      consultarAPI();
+      consultarAPI(); 
       setRecargarCategorias(false);
       console.log(categoriasAPI);
     }
