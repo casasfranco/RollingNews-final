@@ -28,7 +28,6 @@ const Barra = () => {
       nombreUsuario: data.nombreUsuario,
       passUsuario: data.passUsuario,
     };
-
     try {
       const cabecera = {
         method: "POST",

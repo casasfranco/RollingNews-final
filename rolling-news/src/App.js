@@ -5,18 +5,29 @@ import Barra from "./components/common/Barra";
 import Bienvenida from "./components/Administrador/Bienvenida";
 import Usuarios from "./components/Administrador/usuario/Usuarios";
 import Noticias from "./components/Administrador/noticia/Noticias";
+import NuevaNoticia from "./components/Administrador/noticia/NuevaNoticia";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import CategoriaNueva from "./components/Administrador/categoria/CategoriaNueva";
 import Categoria from "./components/Administrador/categoria/Categoria";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Suscripcion from "./components/Administrador/usuario/Suscripcion";
+import PaginaError from "./components/common/PaginaError";
+import Titular from "./components/principal/Titular";
+import Comentarios from "./components/principal/Comentarios";
 
 function App() {
   return (
     <Router>
       <Header></Header>
       <Barra></Barra>
+
       <Switch>
+        <Route exact path="/principal">
+          <Titular></Titular>
+          <Comentarios></Comentarios>
+        </Route>
+
         <Route exact path="/admin">
           <Bienvenida></Bienvenida>
         </Route>
@@ -39,7 +50,11 @@ function App() {
         </Route>
 
         <Route exact path="/admin/usuarios/nuevo">
-          {/* <CategoriaNueva></CategoriaNueva> */}
+          <Suscripcion></Suscripcion>
+        </Route>
+
+        <Route exact path="/admin/usuarios/nuevo/:id">
+          <Suscripcion></Suscripcion>
         </Route>
 
         <Route exact path="/admin/noticias">
@@ -47,7 +62,11 @@ function App() {
         </Route>
 
         <Route exact path="/admin/noticias/nueva">
-          <Noticias></Noticias>
+          <NuevaNoticia></NuevaNoticia>
+        </Route>
+
+        <Route exact path="/error404">
+          <PaginaError></PaginaError>
         </Route>
       </Switch>
       <Footer></Footer>

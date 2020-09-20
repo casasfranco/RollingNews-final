@@ -7,8 +7,9 @@ import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-const LineaCategoria = (props) => {
-  const eliminarCategoria = (id) => {
+const LineaNoticia = (props) => {
+  const eliminarNoticia = (id) => {
+    console.log(id);
 
     Swal.fire({
       title: "¿Esta seguro de eliminar la categoria?",
@@ -23,7 +24,7 @@ const LineaCategoria = (props) => {
         //Elimino la categoria
         try {
           const resultado = await fetch(
-            `https://rolling-news-servidor.herokuapp.com/api/categoria/${id}`,
+            `http://localhost:4000/api/noticia/${id}`,
             {
               method: "DELETE",
               headers: {
@@ -32,6 +33,7 @@ const LineaCategoria = (props) => {
               },
             }
           );
+          console.log(resultado);
           if (resultado.status === 200) {
             Swal.fire(
               "Categoria eliminada!",
@@ -40,12 +42,12 @@ const LineaCategoria = (props) => {
             );
           }
           //Recargar la lista de categorias
-          props.setRecargarCategorias(true);
+          props.setRecargarNoticias(true);
         } catch (error) {
           console.log(error);
         }
       }
-    }); 
+    });
   };
 
   return (
@@ -53,18 +55,29 @@ const LineaCategoria = (props) => {
       <ListGroup.Item className="d-flex justify-content-between">
         <div className="row">
           <div className="ml-3">
-            <p>{props.categoria.nombreCat}</p>
+            <h5>Titulo: {props.noticia.tituloPrincipalNoticia}</h5>
             <p>
               <span className="ml-3 text-muted">
-                Descripción: {props.categoria.descripcionCat}
+                <b>Autor de la nota:</b> {props.noticia.autorNoticia}
+              </span>
+
+              <span className="ml-3 text-muted">
+                <b>Categoria:</b> {props.noticia.categoriaNoticia}
               </span>
             </p>
           </div>
         </div>
-        <div>
+        <div className="d-flex align-items-center">
+          <Button
+            className="mx-3"
+            variant="warning"
+            //onClick={() => editarNoticia(props.noticia._id)}
+          >
+            <FontAwesomeIcon icon={faEdit} />
+          </Button>
           <Button
             variant="danger"
-            onClick={() => eliminarCategoria(props.categoria._id)}
+            onClick={() => eliminarNoticia(props.noticia._id)}
           >
             <FontAwesomeIcon icon={faTrash} />
           </Button>
@@ -74,4 +87,4 @@ const LineaCategoria = (props) => {
   );
 };
 
-export default LineaCategoria;
+export default LineaNoticia;

@@ -11,9 +11,8 @@ const Categoria = () => {
 
   useEffect(() => {
     if (recargarCategorias) {
-      consultarAPI();
+      consultarAPI();  
       setRecargarCategorias(false);
-      console.log(categoriasAPI);
     }
     consultarAPI();
   }, [recargarCategorias]);
@@ -29,7 +28,7 @@ const Categoria = () => {
         // body: JSON.stringify({token:localStorage.getItem('token')}),
       };
       const respuesta = await fetch(
-        `http://localhost:4000/api/categoria/`,
+        `https://rolling-news-servidor.herokuapp.com/api/categoria/`,
         cabecera
       );
       const resultado = await respuesta.json();
@@ -50,7 +49,7 @@ const Categoria = () => {
       <section className="container">
         <div className="mb-3">
           <Link to="/admin/categorias/nueva">
-            <Button variant="info" size="lg">
+            <Button variant="dark" size="lg">
               Nueva categoria
             </Button>{" "}
           </Link>

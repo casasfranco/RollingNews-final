@@ -2,7 +2,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import LineaCategoria from "./LineaCategoria";
 
-const CategoriaTabla = (props) => {
+const CategoriaTabla = (props) => { 
   return (
     <section className="container my-4">
       <h1 className="text-center my-4">Lista de categorias</h1>
@@ -14,7 +14,7 @@ const CategoriaTabla = (props) => {
             setRecargarCategorias={props.setRecargarCategorias}
           ></LineaCategoria>
         ))}
-      </ListGroup>
+      </ListGroup> 
     </section>
   );
 };
