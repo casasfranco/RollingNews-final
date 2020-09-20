@@ -12,6 +12,7 @@ import CategoriaNueva from "./components/Administrador/categoria/CategoriaNueva"
 import Categoria from "./components/Administrador/categoria/Categoria";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Suscripcion from "./components/Administrador/usuario/Suscripcion";
+import PaginaError from "./components/common/PaginaError";
 
 function App() {
 
@@ -56,6 +57,13 @@ function App() {
         <Route exact path="/admin/noticias/nueva">
           <NuevaNoticia></NuevaNoticia>
         </Route>
+
+
+
+        <Route exact path="/error404">
+          <PaginaError></PaginaError>
+        </Route>
+
       </Switch>
       <Footer></Footer>
     </Router>
