@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 
 const Suscripcion = () => {
   const { register, handleSubmit, errors } = useForm();
+
+
   const onSubmit = async (data, e) => {
     const usuario = {
       nombre: data.nombre,
@@ -16,12 +18,17 @@ const Suscripcion = () => {
       nombreUsuario: data.nombreUsuario,
       passUsuario: data.passUsuario,
       direccionUsuario: data.direccionUsuario,
-      localidadUsuario: data.localidadUsuario,
+      provinciaUsuario: 'data.provinciaUsuario',
+      localidadUsuario: 'data.localidadUsuario',
       cpUsuario: data.cpUsuario,
       numTelefonoUsuario: data.numTelefonoUsuario,
-      perfilUsuario: true,
+      perfilUsuario: 'publico',
       estadoUsuario: false,
     }
+
+    console.log(usuario);
+
+    
     try {
       const cabecera = {
         method: "POST",
@@ -166,9 +173,10 @@ const Suscripcion = () => {
               as="select"
               defaultValue="Seleccione..."
               name="provinciaUsuario"
+              
             >
               <option>Seleccione...</option>
-              <option value="#">...</option>
+              <option value="123">...</option>
             </Form.Control>
           </Form.Group>
 
@@ -180,7 +188,7 @@ const Suscripcion = () => {
               name="localidadUsuario"
             >
               <option>Seleccione...</option>
-              <option value="#">...</option>
+              <option value="321">...</option>
             </Form.Control>
           </Form.Group>
 

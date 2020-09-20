@@ -38,6 +38,7 @@ const LineaUsuarios = (props) => {
               "success"
             );
           }
+
           //Recargar la lista de usuarios
           props.setRecargarUsuarios(true);
         } catch (error) {
@@ -65,7 +66,7 @@ const LineaUsuarios = (props) => {
           </Button>
           <Link
             className="btn btn-success"
-            to={`/usuarios/editar/${props.usuario._id}`}
+            to={`/usuarios/nuevo/${props.usuario._id}`}
           >
             Editar
           </Link>
