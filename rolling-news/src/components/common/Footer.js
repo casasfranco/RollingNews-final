@@ -6,29 +6,37 @@ import {
   faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import Logo from "../img/logo_rolling_1.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <section className="pt-5">
       <article className="bg-light py-5 m-0 row">
         <div className="text-center col-sm-12 col-md-4">
-            <img className="w-50" src="logo_rolling_1.png" alt="Logo de Rolling News"></img>
+          <img className="w-50" src={Logo} alt="Logo de Rolling News"></img>
           <div className="pt-5">
-          <FontAwesomeIcon
-            icon={faFacebookSquare}
-            size="3x"
-            fixedWidth
-          ></FontAwesomeIcon>
-          <FontAwesomeIcon
-            icon={faInstagramSquare}
-            size="3x"
-            fixedWidth
-          ></FontAwesomeIcon>
-          <FontAwesomeIcon
-            icon={faTwitterSquare}
-            size="3x"
-            fixedWidth
-          ></FontAwesomeIcon>
+            <Link to={`/error404`} className="text-dark">
+              <FontAwesomeIcon
+                icon={faFacebookSquare}
+                size="3x"
+                fixedWidth
+              ></FontAwesomeIcon>
+            </Link>
+            <Link to={`/error404`} className="text-dark">
+              <FontAwesomeIcon
+                icon={faInstagramSquare}
+                size="3x"
+                fixedWidth
+              ></FontAwesomeIcon>
+            </Link>
+            <Link to={`/error404`} className="text-dark">
+              <FontAwesomeIcon
+                icon={faTwitterSquare}
+                size="3x"
+                fixedWidth
+              ></FontAwesomeIcon>
+            </Link>
           </div>
         </div>
         <div className="text-center col-sm-12 col-md-4">
@@ -43,12 +51,14 @@ const Footer = () => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2689484194984!2d-73.99238078430744!3d40.756109042852344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259acb56ab52f%3A0x1b0e6f6f1b739ea3!2sNew%20York%20Times%20Bldg%2C%20620%208th%20Ave%2C%20New%20York%2C%20NY%2010018%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sar!4v1600146427162!5m2!1ses-419!2sar"
             width="300"
             height="250"
-            frameborder="0"
-            allowfullscreen=""
+            frameBorder="0"
+            allowFullScreen=""
             aria-hidden="false"
-            tabindex="0"
+            tabIndex="0"
           ></iframe>
-          <h5 className="pt-3">Politicas de privacidad</h5>
+          <Link to={`/error404`} className="text-dark">
+            <h5 className="pt-3">Politicas de privacidad</h5>
+          </Link>
         </div>
       </article>
       <h5 className="bg-light text-center py-4">
