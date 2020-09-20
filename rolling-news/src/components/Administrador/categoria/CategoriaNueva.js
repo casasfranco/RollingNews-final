@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const CategoriaNueva = (props) => {
+const CategoriaNueva = () => {
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = async (data, e) => {
@@ -14,7 +14,7 @@ const CategoriaNueva = (props) => {
     const categoria = {
       nombreCat: data.nombreCategoria,
       descripcionCat: data.descripcionCategoria,
-      estadoCat: true,
+      estadoCat: true, 
     };
 
     try {
@@ -22,7 +22,7 @@ const CategoriaNueva = (props) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "token": localStorage.getItem("token")
+          token: localStorage.getItem("token"),
         },
         body: JSON.stringify(categoria),
       };
@@ -42,7 +42,6 @@ const CategoriaNueva = (props) => {
       //redireccionar
       // browserHistory.push("/admin/categorias");
       // props.history.push("/admin/categorias");
-
     } catch (error) {
       console.log(error);
     }
@@ -100,8 +99,8 @@ const CategoriaNueva = (props) => {
                 message: "Agregue una descripcion de esta categoria",
               },
               maxLength: {
-                value: 30,
-                message: "No más de 30 carácteres",
+                value: 50,
+                message: "No más de 50 carácteres",
               },
               minLength: {
                 value: 5,
@@ -117,7 +116,7 @@ const CategoriaNueva = (props) => {
             {errors?.descripcionCategoria?.message}
           </span>
         </Form.Group>
-        <Button variant="info" type="submit">
+        <Button variant="danger" type="submit">
           Añadir nueva categoria
         </Button>
       </Form>

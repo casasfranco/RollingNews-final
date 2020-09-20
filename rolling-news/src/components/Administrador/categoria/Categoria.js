@@ -11,7 +11,7 @@ const Categoria = () => {
 
   useEffect(() => {
     if (recargarCategorias) {
-      consultarAPI();
+      consultarAPI();  
       setRecargarCategorias(false);
     }
     consultarAPI();
@@ -49,7 +49,7 @@ const Categoria = () => {
       <section className="container">
         <div className="mb-3">
           <Link to="/admin/categorias/nueva">
-            <Button variant="info" size="lg">
+            <Button variant="dark" size="lg">
               Nueva categoria
             </Button>{" "}
           </Link>
