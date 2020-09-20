@@ -138,4 +138,8 @@ export function unregister() {
         console.error(error.message);
       });
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/clienteFront-PrincipalMaquetado-Suscripcion
