@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Barra from "./components/common/Barra";
@@ -11,8 +12,10 @@ import CategoriaNueva from "./components/Administrador/categoria/CategoriaNueva"
 import Categoria from "./components/Administrador/categoria/Categoria";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Suscripcion from "./components/Administrador/usuario/Suscripcion";
+import EditarUsuario from "./components/Administrador/usuario/EditarUsuario"
 
 function App() {
+
   return (
     <Router>
       <Header></Header>
@@ -42,6 +45,7 @@ function App() {
         <Route exact path="/admin/usuarios/nuevo">
           <Suscripcion></Suscripcion>
         </Route>
+        
 
         <Route exact path="/admin/noticias">
           <Noticias></Noticias>

@@ -1,32 +1,22 @@
 import React from "react";
-import Table from "react-bootstrap/table";
+import ListGroup from "react-bootstrap/ListGroup";
+import LineaUsuarios from "./LineaUsuarios";
 
-const UsuarioTabla = () => {
+
+const UsuarioTabla = (props) => {
   return (
-    <Table striped bordered variant="dark text-center">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nombre y Apellido</th>
-          <th>Email</th>
-          <th>Usuario</th>
-          <th>Teléfono</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody className="bg-light text-dark">
-        <tr>
-          <td>1</td>
-          <td>Juanito Alcachofa</td>
-          <td>sembrandoelterror@yahoo.com</td>
-          <td>Juanchofa</td>
-          <td>112549845</td>
-          <td>Esperando su amor</td>
-          <td>Editar / Borrar / Habilitar</td>
-        </tr>
-      </tbody>
-    </Table>
+    <section className="container my-4">
+      <h1 className="text-center my-4">Lista de Usuarios</h1>
+      <ListGroup>
+        {props.usuariosAPI.map((usuario) => (
+          <LineaUsuarios
+            key={usuario._id}
+            usuario={usuario}
+            setRecargarUsuario={props.setRecargarUsuario}
+          ></LineaUsuarios>
+        ))}
+      </ListGroup>
+    </section>
   );
 };
 

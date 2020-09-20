@@ -2,11 +2,12 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 //Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-const LineaUsuarios = () => {
+const LineaUsuarios = (props) => {
   const eliminarUsuario = (id) => {
     Swal.fire({
       title: "¿Esta seguro de eliminar el usuario?",
@@ -50,16 +51,9 @@ const LineaUsuarios = () => {
       <ListGroup.Item className="d-flex justify-content-between">
         <div className="row">
           <div className="ml-3">
+            <p>{props.usuario.nombreUsuario}</p>
             <p>{props.usuario.nombre}</p>
             <p>{props.usuario.apellido}</p>
-            <p>{props.usuario.nombreUsuario}</p>
-            <p>{props.usuario.passUsuario}</p>
-            <p>{props.usuario.direccionUsuario}</p>
-            <p>{props.usuario.localidadUsuario}</p>
-            <p>{props.usuario.localidadUsuario}</p>
-            
-
-
           </div>
         </div>
         <div>
@@ -69,6 +63,12 @@ const LineaUsuarios = () => {
           >
             <FontAwesomeIcon icon={faTrash} />
           </Button>
+          <Link
+            className="btn btn-success"
+            to={`/usuarios/editar/${props.usuario._id}`}
+          >
+            Editar
+          </Link>
         </div>
       </ListGroup.Item>
     </div>
