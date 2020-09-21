@@ -3,9 +3,11 @@ import Image from 'react-bootstrap/Image';
 
 const Clima = () => {
     return (
-        <div>
+        <section className = "container">
+              <div>
  <Image src="clima.png" fluid />
         </div>
+        </section>
     );
 };
 

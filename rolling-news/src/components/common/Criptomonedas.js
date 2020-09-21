@@ -4,9 +4,12 @@ import Image from 'react-bootstrap/Image';
 
 const Criptomonedas = () => {
     return (
-        <div>
+        <section className ="container">
+       <div>
  <Image src="cripto.png" fluid />
         </div>
+
+        </section>
     );
 };
 
