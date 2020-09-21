@@ -15,13 +15,15 @@ import Suscripcion from "./components/Administrador/usuario/Suscripcion";
 import PaginaError from "./components/common/PaginaError";
 import Titular from "./components/principal/Titular";
 import Comentarios from "./components/principal/Comentarios";
+import Criptomonedas from './components/principal/Criptomonedas';
+import Clima from './components/principal/Clima';
 
 function App() {
   return (
     <Router>
-      <Header></Header>
       <Barra></Barra>
-
+      <Criptomonedas></Criptomonedas>
+      <Clima></Clima>
       <Switch>
         <Route exact path="/principal">
           <Titular></Titular>
@@ -73,5 +75,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
