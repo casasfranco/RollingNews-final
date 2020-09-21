@@ -58,3 +58,16 @@
   font-weight: 900;
   transition: all 300ms ease;
 }
+
+.cardCripto{
+  width: 20rem;
+}
+
+.criptoImg{
+  max-width: 3rem;
+  /* align-self: center; */
+}
+.tiempoImg{
+  max-width: 5rem;
+  /* align-self: center; */
+}
