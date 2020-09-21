@@ -7,7 +7,7 @@ const Clima = (props) => {
         <Fragment>
           {/* <Card.Img variant="top" src={detallesClima} /> */}
           <Card.Body>
-            <Card.Title>{props.detallesClima.location.country}, {props.detallesClima.location.country}</Card.Title>
+            <Card.Title>{props.detallesClima.location.country}, {props.detallesClima.location.region}</Card.Title>
             <Card.Text>{props.detallesClima.location.timezone_id}</Card.Text>
             <Card.Img
             variant="top"
