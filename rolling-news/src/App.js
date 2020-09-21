@@ -19,8 +19,9 @@ function App() {
     <Router>
       <Barra></Barra>
       <Switch>
-        <Route exact path="/principal"></Route>
-        <Principal></Principal>
+        <Route exact path="/principal">
+          <Principal></Principal>
+        </Route>
         <Route exact path="/admin">
           <Bienvenida></Bienvenida>
         </Route>
