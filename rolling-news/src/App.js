@@ -12,20 +12,15 @@ import Categoria from "./components/Administrador/categoria/Categoria";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Suscripcion from "./components/Administrador/usuario/Suscripcion";
 import PaginaError from "./components/common/PaginaError";
-import Titular from "./components/principal/Titular";
-import Comentarios from "./components/principal/Comentarios";
+import Principal from "./components/common/Principal";
 
 function App() {
   return (
     <Router>
       <Barra></Barra>
-
       <Switch>
-        <Route exact path="/principal">
-          <Titular></Titular>
-          <Comentarios></Comentarios>
-        </Route>
-
+        <Route exact path="/principal"></Route>
+        <Principal></Principal>
         <Route exact path="/admin">
           <Bienvenida></Bienvenida>
         </Route>
