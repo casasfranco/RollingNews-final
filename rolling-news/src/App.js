@@ -14,16 +14,15 @@ import Suscripcion from "./components/Administrador/usuario/Suscripcion";
 import PaginaError from "./components/common/PaginaError";
 import Titular from "./components/principal/Titular";
 import Comentarios from "./components/principal/Comentarios";
-import Criptomonedas from './components/principal/Criptomonedas';
-import Clima from './components/principal/Clima';
+import Criptomonedas from './components/common/Criptomonedas';
+
 
 function App() {
   return (
     <Router>
       <Barra></Barra>
       <Criptomonedas></Criptomonedas>
-      <Clima></Clima>
-      <Switch>
+        <Switch>
         <Route exact path="/principal">
           <Titular></Titular>
           <Comentarios></Comentarios>
