@@ -1,6 +1,9 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import NoticiaDestacada from "./NoticiaDestacada.js";
 
 const Principal = () => {
   return (
@@ -23,42 +26,49 @@ const Principal = () => {
         </Card.Body>
       </Card>
 
-      <Container className=" container-fluid">
-        <div className="row">
-          <div className="col-lg-8 col-sm-12 p-0">noticia</div>
-          <div className="col-lg-4 col-sm-12 p-0 bg-danger">publicidad</div>
+      <div className="container-fluid">
+        <div className="row justify-content-between">
+          {/* Cards */}
+          <div className="col-sm-10 col-md-8 col-xl-9">
+            <div className="row">
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+              <div className="col-sm-12 col-md-6 col-xl-4">
+                <NoticiaDestacada></NoticiaDestacada>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-4 col-xl-3 mb-4">
+              <div>
+                <Card>
+                  <Card.Body>This is some text within a card body.</Card.Body>
+                </Card>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="row">
-          <div className="col-lg-4 col-sm-12 p-0"> noticia</div>
-          <div className="col-lg-4 col-sm-12 p-0"> noticia</div>
-          <div className="col-lg-4 col-sm-12 p-0"> publicidad</div>
-        </div>
-
-        <div className="font-weight-bolder"> categoria</div>
-
-        <div className="row">
-          <div className="col-lg-4 col-sm-12 p-0">noticia </div>
-          <div className="col-lg-4 col-sm-12 p-0">noticia </div>
-        </div>
-
-        <div className="font-weight-bolder">categoria</div>
-        <div className="row">
-          <div className="col-lg-8 col-sm-12 p-0"> Noticia </div>
-          <div className="col-lg-4 col-sm-12 p-0"> publicidad</div>
-        </div>
-
-        <div className="row">
-          <div className="col-lg-8 col-sm-12 p-0">noticia </div>
-          <div className="col-lg-4 col-sm-12 p-0"> publicidad</div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-sm-12">noticia </div>
-          <div class="col-lg-4 col-sm-12">noticia </div>
-          <div class="col-lg-4 col-sm-12"> noticia</div>
-        </div>
-      </Container>
+      </div>
     </div>
   );
 };
