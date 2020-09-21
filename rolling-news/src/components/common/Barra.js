@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import logo from "../../assets/logo-rolling.jpg"; // relative path to image
+import logo from "../../assets/logo-rolling.png"; // relative path to image
 import $ from "jquery";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";

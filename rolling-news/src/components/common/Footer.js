@@ -6,7 +6,7 @@ import {
   faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
-import Logo from "../../assets/logo-rolling.jpg";
+import Logo from "../../assets/logo-rolling.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
