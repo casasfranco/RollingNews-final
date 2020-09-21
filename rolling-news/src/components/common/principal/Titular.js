@@ -11,26 +11,26 @@ import Comentarios from './Comentarios';
 const Titular = () => {
     return (
   <div className = "container">
-  <Jumbotron fluid className="mt-5">
+  <Jumbotron fluid className="mt-3">
   <Container>
-  <h5><Badge variant="info">Actualidad</Badge></h5>
-    <div className="mt-4">
+  <h5 className="mt-1"><Badge variant="info">Actualidad</Badge></h5>
+    <div className="mt-2">
     <h1>Titulo de la noticia</h1>
     </div>
     <h5>En tiempos sin pandemia, el próximo lunes es una fecha de encuentro para los jóvenes tucumanos, que tradicionalmente salen a celebrar el día del estudiante y la llegada de la primavera..</h5>
-<div className="mt-4">
+<div className="mt-2">
      <Card.Subtitle className="text-muted">22 de Septiembre - 08:30</Card.Subtitle>
       </div>
   
   </Container>
-  <div className="mt-4 ml-3">
+  <div className="mt-2 ml-3">
   <Image src="tucuman.jpg" fluid />
   <p>Foto tomada por Rolling News .</p>
   </div>
   <section className="container ml-2">
   <Image src="cuidarse.png" fluid />
   </section>
-  <section className="container mt-5">
+  <section className="container mt-3">
   <p>En tiempos sin pandemia, el próximo lunes es una fecha de encuentro para los jóvenes tucumanos, que tradicionalmente salen a celebrar el día del estudiante y la llegada de la primavera.
 
 Por esta razón, las autoridades sanitarias y municipales pusieron su atención en el 21 de septiembre, jornada que reforzarán los controles para evitar reuniones como las que ocurrieron el Día del Amigo o las aglomeraciones del Día del Niño.
@@ -42,7 +42,7 @@ Nos convocó la señora ministra de Salud al secretario de gobierno de la Munici
  <strong>Nota Elaborada por Lucas Gutierrez.</strong>
 </section>
 
-<div className="container mt-5">
+<div className="container mt-3">
   <h4>Comentarios</h4>
  <Comentarios></Comentarios>
 </div>
