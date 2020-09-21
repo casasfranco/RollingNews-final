@@ -230,10 +230,10 @@ const Barra = () => {
       </Navbar>
 
       <Navbar expand="lg">
-        <Navbar.Brand href="#home"></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="navbar-nav" className="justify-content-center">
           <Nav className="mx-2">
+          <Nav.Link className="h5">Inicio</Nav.Link>
             <Nav.Link href="#home">Actualidad</Nav.Link>
             <Nav.Link href="#features">Espectáculos</Nav.Link>
             <Nav.Link href="#pricing">Tecnología</Nav.Link>
