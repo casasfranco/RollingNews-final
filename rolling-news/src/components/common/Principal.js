@@ -149,7 +149,11 @@ const Principal = () => {
               </div>
             </div>
             <div className="col-sm-12 col-md-4 col-xl-3 mb-4">
-
+              <div>
+                <Card>
+                  <Card.Body>This is some text within a card body.</Card.Body>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
