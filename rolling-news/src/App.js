@@ -19,7 +19,6 @@ import Comentarios from "./components/principal/Comentarios";
 function App() {
   return (
     <Router>
-      <Header></Header>
       <Barra></Barra>
 
       <Switch>

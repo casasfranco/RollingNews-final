@@ -12,6 +12,7 @@ import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/logo-rolling.jpg"; // relative path to image
 import $ from "jquery";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Barra = () => {
   const [show, setShow] = useState(false);
@@ -77,10 +78,10 @@ const Barra = () => {
         expand="lg"
         className="d-flex justify-content-between align-items-center"
       >
-        <Image id="logo" src={logo} rounded></Image>
+        <Image id="img-barra" src={logo} rounded></Image>
 
         <Nav className="text-center">
-          <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
+          <Button className="m-2 shadow btn btn-dark" onClick={handleShow}>
             Ingresar
           </Button>
 
@@ -163,7 +164,7 @@ const Barra = () => {
                   </span>
                 </Form.Group>
 
-                <Button variant="dark" size="sm" type="submit">
+                <Button variant="dark" type="submit">
                   Ingresar
                 </Button>
               </Form>
@@ -171,22 +172,26 @@ const Barra = () => {
 
             <Modal.Footer className="mx-5">
               <p>Ingresá con tu cuenta</p>
-              <Button variant="primary" size="lg" onClick={handleClose}>
-                <FontAwesomeIcon icon={faFacebook} />
-              </Button>
-              <Button variant="danger" size="lg" onClick={handleClose}>
-                <FontAwesomeIcon icon={faGoogle} />
-              </Button>
+              <Link to={`/error404`}>
+                <Button variant="primary" size="lg" onClick={handleClose}>
+                  <FontAwesomeIcon icon={faFacebook} />
+                </Button>
+              </Link>
+              <Link to={`/error404`}>
+                <Button variant="danger" size="lg" onClick={handleClose}>
+                  <FontAwesomeIcon icon={faGoogle} />
+                </Button>
+              </Link>
             </Modal.Footer>
           </Modal>
 
-          <Button className="mx-2 shadow" size="sm" variant="outline-dark">
-            Suscribirme
-          </Button>
+          <Link to={`/error404`}>
+            <Button className="my-2 shadow" variant="outline-dark">
+              Suscribirme
+            </Button>
+          </Link>
         </Nav>
       </Navbar>
-
-      <hr />
 
       <Navbar expand="lg">
         <Navbar.Brand href="#home"></Navbar.Brand>
