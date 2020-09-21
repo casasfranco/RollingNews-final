@@ -44,7 +44,7 @@ const Usuarios = () => {
       </Jumbotron>
       <section className="container">
         <div className="mb-3">
-          <Link to="/admin/usuario">
+          <Link to="/admin/usuarios/nuevo">
             <Button variant="info" size="lg">
               Nuevo usuario
             </Button>{" "}

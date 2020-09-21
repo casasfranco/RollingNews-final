@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
@@ -10,16 +10,15 @@ import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/logo-rolling.jpg"; // relative path to image
-import $ from "jquery";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Barra = () => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const { register, errors, handleSubmit } = useForm();
+  const [recargarBotones, setRecargarBotones] = useState(false);
 
   const onSubmit = async (data, e) => {
     //Login de los datos validados.
@@ -69,6 +68,52 @@ const Barra = () => {
     // $(document.getElementById("loginModal")).hide();
   };
 
+  function UserAdminButton(props) {
+    return (
+      <Fragment>
+        <Link to="/admin">
+          <Button className="mx-2 shadow" size="sm" variant="info">
+            Administración
+          </Button>
+        </Link>
+        <Button
+          className="mx-2 shadow"
+          size="sm"
+          variant="danger"
+          onClick={cerrarSesion}
+        >
+          Cerrar Sesión
+        </Button>
+      </Fragment>
+    );
+  }
+
+  function LoginButton(props) {
+    return (
+      <Fragment>
+        <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
+          Ingresar
+        </Button>
+        <Button className="mx-2 shadow" size="sm" variant="outline-dark">
+          Suscribirme
+        </Button>
+      </Fragment>
+    );
+  }
+
+  function Admin(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedIn) {
+      return <UserAdminButton />;
+    }
+    return <LoginButton />;
+  }
+
+  function cerrarSesion() {
+    localStorage.removeItem("token");
+    setRecargarBotones(true);
+  }
+
   return (
     <div>
       <Navbar
@@ -80,9 +125,7 @@ const Barra = () => {
         <Image id="logo" src={logo} rounded></Image>
 
         <Nav className="text-center">
-          <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
-            Ingresar
-          </Button>
+          <Admin isLoggedIn={localStorage.getItem("token")} />
 
           <Modal
             show={show}
@@ -179,10 +222,6 @@ const Barra = () => {
               </Button>
             </Modal.Footer>
           </Modal>
-
-          <Button className="mx-2 shadow" size="sm" variant="outline-dark">
-            Suscribirme
-          </Button>
         </Nav>
       </Navbar>
 

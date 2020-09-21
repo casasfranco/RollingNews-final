@@ -12,7 +12,7 @@ const UsuarioTabla = (props) => {
           <LineaUsuarios
             key={usuario._id}
             usuario={usuario}
-            setRecargarUsuario={props.setRecargarUsuario}
+            setRecargarUsuarios={props.setRecargarUsuarios}
           ></LineaUsuarios>
         ))}
       </ListGroup>

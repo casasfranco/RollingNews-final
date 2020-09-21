@@ -51,7 +51,7 @@ function App() {
           <Suscripcion></Suscripcion>
         </Route>
 
-        <Route exact path="/admin/usuarios/nuevo/:id">
+        <Route exact path="/admin/usuarios/:id">
           <Suscripcion></Suscripcion>
         </Route>
 

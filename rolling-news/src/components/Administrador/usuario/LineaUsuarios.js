@@ -58,18 +58,20 @@ const LineaUsuarios = (props) => {
           </div>
         </div>
         <div>
+
+          <Link
+            className="btn btn-warning mx-2"
+            to={{ pathname: `/admin/usuarios/${props.usuario._id}`, state: { usuario: props.usuario}}}
+          >
+            <FontAwesomeIcon icon={faEdit} />
+          </Link>
+
           <Button
             variant="danger"
             onClick={() => eliminarUsuario(props.usuario._id)}
           >
             <FontAwesomeIcon icon={faTrash} />
           </Button>
-          <Link
-            className="btn btn-success"
-            to={`/usuarios/nuevo/${props.usuario._id}`}
-          >
-            Editar
-          </Link>
         </div>
       </ListGroup.Item>
     </div>
