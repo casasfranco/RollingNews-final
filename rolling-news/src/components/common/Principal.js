@@ -1,8 +1,5 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 import NoticiaDestacada from "./NoticiaDestacada.js";
 import NoticiaSecundaria from "./NoticiaSecundaria.js";
 
@@ -30,7 +27,7 @@ const Principal = () => {
               <div className="col-sm-12 col-md-6 col-xl-4">
                 <NoticiaDestacada></NoticiaDestacada>
               </div>
-              <div className="col-sm-12 col-md-6 col-xl-4 p-0">
+              <div className="col-sm-12 col-md-6 col-xl-4">
                 <NoticiaSecundaria></NoticiaSecundaria>
                 <NoticiaSecundaria></NoticiaSecundaria>
 
