@@ -10,14 +10,14 @@ const Comentarios = () => {
           defer
           crossorigin="anonymous"
           src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0"
-          nonce="wYuCtVpR"
+          nonce="RO3I8VMz"
         ></script>
       </Fragment>
 
       <Fragment>
         <div
           class="fb-comments"
-          data-href="https://web.facebook.com/mariano.gutierrez.elmago/posts/10223238239530487?comment_id=10223238243090576&amp;reply_comment_id=10223243516662412"
+          data-href="https://web.facebook.com/RollingCodeSchool"
           data-numposts="5"
           data-width=""
         ></div>

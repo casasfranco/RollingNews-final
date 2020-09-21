@@ -24,7 +24,7 @@ function App() {
       <Criptomonedas></Criptomonedas>
       <Clima></Clima>
       <Switch>
-        <Route exact path="/principal">
+        <Route exact path="/noticia">
           <Titular></Titular>
           <Comentarios></Comentarios>
         </Route>
