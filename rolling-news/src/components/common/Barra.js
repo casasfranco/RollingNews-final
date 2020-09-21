@@ -122,11 +122,11 @@ const Barra = () => {
         expand="lg"
         className="d-flex justify-content-between align-items-center"
       >
-        <Image id="logo" src={logo} rounded></Image>
+        <Image id="img-barra" src={logo} rounded></Image>
 
         <Nav className="text-center">
           <Admin isLoggedIn={localStorage.getItem("token")} />
-
+          
           <Modal
             show={show}
             onHide={handleClose}
@@ -206,7 +206,7 @@ const Barra = () => {
                   </span>
                 </Form.Group>
 
-                <Button variant="dark" size="sm" type="submit">
+                <Button variant="dark" type="submit">
                   Ingresar
                 </Button>
               </Form>
@@ -214,18 +214,20 @@ const Barra = () => {
 
             <Modal.Footer className="mx-5">
               <p>Ingresá con tu cuenta</p>
-              <Button variant="primary" size="lg" onClick={handleClose}>
-                <FontAwesomeIcon icon={faFacebook} />
-              </Button>
-              <Button variant="danger" size="lg" onClick={handleClose}>
-                <FontAwesomeIcon icon={faGoogle} />
-              </Button>
+              <Link to={`/error404`}>
+                <Button variant="primary" size="lg" onClick={handleClose}>
+                  <FontAwesomeIcon icon={faFacebook} />
+                </Button>
+              </Link>
+              <Link to={`/error404`}>
+                <Button variant="danger" size="lg" onClick={handleClose}>
+                  <FontAwesomeIcon icon={faGoogle} />
+                </Button>
+              </Link>
             </Modal.Footer>
           </Modal>
         </Nav>
       </Navbar>
-
-      <hr />
 
       <Navbar expand="lg">
         <Navbar.Brand href="#home"></Navbar.Brand>
