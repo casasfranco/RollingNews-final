@@ -202,13 +202,10 @@ const NuevaNoticia = () => {
                     message: "No más de 10000 carácteres",
                   },
                   minLength: {
-                    value: 3,
-                    message: "Mínimo 5 carácteres",
+                    value: 20,
+                    message: "Mínimo 20 carácteres",
                   },
-                  pattern: {
-                    value: /^[A-Za-z0-9\s]+$/g,
-                    message: "Ingrese la información de la noticia",
-                  },
+                 
                 })}
               />
               <span id="errorCuerpoNoticia" className="text-danger mb-2">
@@ -233,6 +230,10 @@ const NuevaNoticia = () => {
                   minLength: {
                     value: 3,
                     message: "Mínimo 5 carácteres",
+                  },
+                  pattern: {
+                    value: /^[.A-Za-z0-9\s]+$/g,
+                    message: "Ingrese la información de la noticia",
                   },
                 })}
               />
