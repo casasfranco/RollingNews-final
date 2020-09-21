@@ -7,7 +7,6 @@ import Usuarios from "./components/Administrador/usuario/Usuarios";
 import Noticias from "./components/Administrador/noticia/Noticias";
 import NuevaNoticia from "./components/Administrador/noticia/NuevaNoticia";
 import Footer from "./components/common/Footer";
-import Header from "./components/common/Header";
 import CategoriaNueva from "./components/Administrador/categoria/CategoriaNueva";
 import Categoria from "./components/Administrador/categoria/Categoria";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -55,7 +54,7 @@ function App() {
           <Suscripcion></Suscripcion>
         </Route>
 
-        <Route exact path="/admin/usuarios/nuevo/:id">
+        <Route exact path="/admin/usuarios/:id">
           <Suscripcion></Suscripcion>
         </Route>
 
