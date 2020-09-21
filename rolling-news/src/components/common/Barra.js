@@ -38,7 +38,7 @@ const Barra = () => {
       };
 
       const resultado = await fetch(
-        "http://localhost:4000/api/autenticar/",
+        "https://rolling-news-servidor.herokuapp.com/api/autenticar/",
         cabecera
       )
         .then(function (response) {
