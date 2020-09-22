@@ -15,11 +15,7 @@ const Principal = (props) => {
 
   return (
     <div>
-      <div className="row m-0">
-        <h1>Apis</h1>
-      </div>
-
-      <div className="container-fluid">
+     <div className="container-fluid">
         <div className="row justify-content-between">
           {/* Inicio de las cards de noticias */}
           <div className="col-sm-10 col-md-8 col-xl-9">

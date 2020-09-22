@@ -25,8 +25,9 @@ const Criptomonedas = (props) => {
   }
 
   return (
-    <CardDeck>
-      <Card>
+    <Fragment>
+      <Card border="dark" className="apiMoneda m-3">
+        <Card.Header className="bg-dark"></Card.Header>
         <Card.Body>
           <Card.Img
             variant="top"
@@ -36,7 +37,7 @@ const Criptomonedas = (props) => {
           <Cargar></Cargar>
         </Card.Body>
       </Card>
-    </CardDeck>
+    </Fragment>
 
     // <Card className="cardCripto" border="light">
     //   <div className="row justify-content-center">

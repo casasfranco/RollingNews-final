@@ -286,6 +286,7 @@ const NuevaNoticia = (props) => {
                     value: 3,
                     message: "Mínimo 3 carácteres",
                   },
+                 
                 })}
               />
               <span id="errorCuerpoNoticia" className="text-danger mb-2">
@@ -310,6 +311,10 @@ const NuevaNoticia = (props) => {
                   minLength: {
                     value: 3,
                     message: "Mínimo 3 carácteres",
+                  },
+                  pattern: {
+                    value: /^[.A-Za-z0-9\s]+$/g,
+                    message: "Ingrese la información de la noticia",
                   },
                 })}
               />
