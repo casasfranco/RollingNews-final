@@ -116,7 +116,7 @@ const CategoriaNueva = () => {
             {errors?.descripcionCategoria?.message}
           </span>
         </Form.Group>
-        <Button variant="danger" type="submit">
+        <Button className="mb-4" variant="danger" type="submit">
           Añadir nueva categoria
         </Button>
       </Form>

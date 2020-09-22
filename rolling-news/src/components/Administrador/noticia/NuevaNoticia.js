@@ -113,10 +113,7 @@ const NuevaNoticia = () => {
                     value: 5,
                     message: "Mínimo 5 carácteres",
                   },
-                  pattern: {
-                    value: /^[A-Za-z0-9\s]+$/g,
-                    message: "Ingrese un texto válido",
-                  },
+                  
                 })}
               />
               <span id="errorVolanta" className="text-danger mb-2">
@@ -142,10 +139,7 @@ const NuevaNoticia = () => {
                     value: 5,
                     message: "Mínimo 5 carácteres",
                   },
-                  pattern: {
-                    value: /^[A-Za-z0-9\s]+$/g,
-                    message: "Ingrese un texto válido",
-                  },
+                  
                 })}
               />
               <span id="errorTitulo" className="text-danger mb-2">
@@ -171,10 +165,7 @@ const NuevaNoticia = () => {
                     value: 10,
                     message: "Mínimo 10 carácteres",
                   },
-                  pattern: {
-                    value: /^[A-Za-z0-9\s]+$/g,
-                    message: "Ingrese un texto válido",
-                  },
+                  
                 })}
               />
               <span id="errorCopete" className="text-danger mb-2">
@@ -230,10 +221,7 @@ const NuevaNoticia = () => {
                     value: 3,
                     message: "Mínimo 3 carácteres",
                   },
-                  pattern: {
-                    value: /^[A-Za-z0-9\s]+$/g,
-                    message: "Ingrese la información de la noticia",
-                  },
+                  
                 })}
               />
               <span id="errorCuerpoNoticia" className="text-danger mb-2">
