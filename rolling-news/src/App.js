@@ -17,6 +17,7 @@ import Comentarios from "./components/principal/Comentarios";
 import Criptomonedas from "./components/principal/Criptomonedas";
 import Clima from "./components/principal/Clima";
 import Principal from "./components/common/Principal";
+import { Container, Card, Row } from "react-bootstrap";
 
 function App() {
   const [monedasAPI, setMonedasAPI] = useState();
@@ -119,12 +120,12 @@ function App() {
   function Cargar(props) {
     if (props.datos !== undefined) {
       return monedasAPI.map((moneda, index) => (
-          <Criptomonedas
-            moneda={moneda}
-            key={moneda.name}
-            detallesMoneda={props.datos[index]}
-            setRecargarMonedasDetalle={setRecargarMonedasDetalle}
-          ></Criptomonedas>
+        <Criptomonedas
+          moneda={moneda}
+          key={moneda.name}
+          detallesMoneda={props.datos[index]}
+          setRecargarMonedasDetalle={setRecargarMonedasDetalle}
+        ></Criptomonedas>
       ));
     }
     return "chau";
@@ -132,11 +133,7 @@ function App() {
 
   function CargarClima(props) {
     if (props.clima != undefined) {
-      return (
-        <Clima
-          detallesClima={props.clima}
-        ></Clima>
-      );
+      return <Clima detallesClima={props.clima}></Clima>;
     }
     return "chau";
   }
@@ -145,33 +142,35 @@ function App() {
     <Router>
       <Barra></Barra>
       <Switch>
-      <Route exact path="/hola">
-      <div className="container">
-        <div className="row justify-content-center">
-          <Cargar datos={monedasDetalleAPI} />
-          {/* <Clima></Clima> */}
-        </div>
-      </div>
-      <CargarClima clima={climaAPI} />
-
+        <Route exact path="/hola">
+          <Container fluid className="text-center">
+            <Row>
+              <div className="col-sm-12 col-md-6">
+                <CargarClima clima={climaAPI} />
+              </div>
+              <div className="col-sm-12 col-md-6">
+                <Cargar datos={monedasDetalleAPI} />
+              </div>
+            </Row>
+          </Container>
           <Titular></Titular>
           <Comentarios></Comentarios>
-          </Route>
+        </Route>
         <Route exact path="/">
-        <div className="container">
-        <div className="row justify-content-center">
-          <Cargar datos={monedasDetalleAPI} />
-          {/* <Clima></Clima> */}
-        </div>
-      </div>
-      <CargarClima clima={climaAPI} />
-          <Principal></Principal>
+          <Container fluid className="text-center">
+            <Row>
+              <div className="col-sm-12 col-md-4">
+                <CargarClima clima={climaAPI} />
+              </div>
+              <Cargar datos={monedasDetalleAPI} />
+            </Row>
+            <Principal></Principal>
+          </Container>
         </Route>
 
         <Route exact path="/admin">
           <Bienvenida></Bienvenida>
         </Route>
-
 
         <Route
           exact
@@ -181,8 +180,7 @@ function App() {
               <Categoria></Categoria>
             </div>
           )}
-        >
-</Route>
+        ></Route>
         <Route exact path="/admin/categorias/nueva">
           <CategoriaNueva></CategoriaNueva>
         </Route>
