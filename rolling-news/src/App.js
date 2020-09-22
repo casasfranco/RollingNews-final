@@ -16,7 +16,7 @@ import Titular from "./components/principal/Titular";
 import Comentarios from "./components/principal/Comentarios";
 import Criptomonedas from "./components/principal/Criptomonedas";
 import Clima from "./components/principal/Clima";
-import Principal from "./components/common/Principal";
+import Principal from "./components/principal/Principal";
 
 function App() {
   const [monedasAPI, setMonedasAPI] = useState();
@@ -233,16 +233,15 @@ function App() {
           <Suscripcion></Suscripcion>
         </Route>
 
-        <Route exact path="/admin/usuarios/:id"render={(props) => {
-          //Obtener id de la url
-          const idUsuario = props.match.params.id;
-          return (
-            <Suscripcion
-            idUsuario={idUsuario}
-            ></Suscripcion>
-          );
-        }}>
-        </Route>
+        <Route
+          exact
+          path="/admin/usuarios/:id"
+          render={(props) => {
+            //Obtener id de la url
+            const idUsuario = props.match.params.id;
+            return <Suscripcion idUsuario={idUsuario}></Suscripcion>;
+          }}
+        ></Route>
 
         <Route exact path="/admin/noticias">
           <Noticias></Noticias>
@@ -252,19 +251,16 @@ function App() {
           <NuevaNoticia></NuevaNoticia>
         </Route>
 
-        <Route exact path="/admin/noticias/:id"
-        render={(props) => {
-          //Obtener id de la url
-          const idNoticia = props.match.params.id;
-          
-          return (
-            <NuevaNoticia
-            idNoticia={idNoticia}
-            ></NuevaNoticia>
-          );
-        }}>
-          
-        </Route>
+        <Route
+          exact
+          path="/admin/noticias/:id"
+          render={(props) => {
+            //Obtener id de la url
+            const idNoticia = props.match.params.id;
+
+            return <NuevaNoticia idNoticia={idNoticia}></NuevaNoticia>;
+          }}
+        ></Route>
 
         <Route exact path="/error404">
           <PaginaError></PaginaError>

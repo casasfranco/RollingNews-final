@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import NoticiaDestacada from "./NoticiaDestacada.js";
 import NoticiaSecundaria from "./NoticiaSecundaria.js";
-import Publicidad from "./Publicidad.js";
+import Publicidad from "../common/Publicidad";
 
 const Principal = (props) => {
+  const [noticiasAPI, setNoticiasAPI] = useState();
+
+  let destacadas,
+    sinDestacar = [];
+
+  useEffect(() => {
+    setNoticiasAPI(props.noticiasAPI);
+  });
 
   return (
     <div>

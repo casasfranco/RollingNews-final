@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 const NoticiaDestacada = (props) => {
-  console.log(props);
+  
   return (
     <div>
       <Card className=" p-0 mt-0  w-100 h-75">

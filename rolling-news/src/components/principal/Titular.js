@@ -13,7 +13,6 @@ const Titular = (props) => {
   //Controlo si hay valores (estoy en editar)
   if (location.state !== undefined) {
     noticia = location.state.noticia;
-    console.log(noticia);
   }
 
   return (
