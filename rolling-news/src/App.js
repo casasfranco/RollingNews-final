@@ -26,8 +26,14 @@ function App() {
   const [monedasDetalleAPI, setMonedasDetalleAPI] = useState();
   const [climaAPI, setClimaAPI] = useState();
   const [recargarClima, setRecargarClima] = useState(true);
+  //Noticias
+  const [noticiasAPI, setNoticiasAPI] = useState([]);
+
 
   useEffect(() => {
+    
+    consultarNoticiasAPI();
+
     if (recargarMonedas) {
       consultarMonedasAPI();
       setRecargarMonedas(false);
@@ -43,6 +49,48 @@ function App() {
       setRecargarClima(false);
     }
   }, [recargarMonedas, recargarMonedasDetalle]);
+
+
+
+
+  
+
+  // useEffect(() => {
+  //   if (recargarNoticias) {
+  //     consultarAPI();
+  //     setRecargarNoticias(false);
+  //   }
+  // }, [recargarNoticias]);
+
+  const consultarNoticiasAPI = async () => {
+    try {
+      const cabecera = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+      };
+      const respuesta = await fetch(
+        "https://rolling-news-servidor.herokuapp.com/api/noticia/",
+        cabecera
+      );
+      const resultado = await respuesta.json();
+      setNoticiasAPI(resultado);
+      console.log(resultado);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+
+
+
+
+
+
 
   const consultarMonedasAPI = async () => {
     try {
@@ -153,7 +201,16 @@ function App() {
           <Titular></Titular>
           <Comentarios></Comentarios>
         </Route>
-        <Route exact path="/">
+        <Route exact path="/" render={() => (
+            <div>
+              <Principal noticiasAPI={noticiasAPI}></Principal>
+              {/* <ListaProductos
+                productosAPI={productosAPI}
+                setRecargarProductos={setRecargarProductos}
+              ></ListaProductos>
+              <Paginacion consultarAPI={consultarAPI} totalPaginas={totalPaginas} paginaActual={parseInt(paginaActual)}></Paginacion> */}
+            </div>
+          )}>
           {/* <div className="container">
         <div className="row justify-content-center">
           <Cargar datos={monedasDetalleAPI} />
@@ -161,7 +218,7 @@ function App() {
         </div>
       </div>
       <CargarClima clima={climaAPI} /> */}
-          <Principal></Principal>
+          
         </Route>
 
         <Route exact path="/admin">

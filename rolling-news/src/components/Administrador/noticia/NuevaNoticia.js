@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -6,60 +6,85 @@ import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-
 const NuevaNoticia = () => {
-
   const { register, errors, handleSubmit } = useForm();
+  const [categoriasAPI, setCategoriasAPI] = useState([]);
+  const [cargarCategorias, setCargarCategorias] = useState(true);
+  useEffect(() => {
+    if (cargarCategorias) {
+      consultarCategoriasAPI();
+      setCargarCategorias(false);
+    }
+  });
 
-  const onSubmit = async (data, e) => {
-   //Modelo del objeto con el que vamos a trabajar (debe cumplir esta estructura)
-   const noticia = {
-    volantaNoticia: data.volantaNoticia,
-    tituloPrincipalNoticia: data.tituloPrincipalNoticia,
-    copeteNoticia: data.copeteNoticia,
-    urlImgPrincipalNoticia: data.urlImgPrincipalNoticia,
-    cuerpoNoticia: data.cuerpoNoticia,
-    urlImgOpcionalNoticia: data.urlImgOpcionalNoticia,
-    autorNoticia: data.autorNoticia,
-    categoriaNoticia: data.categoriaNoticia,
-    publicadaNoticia: true,
-    estadoNoticia: true
+  const consultarCategoriasAPI = async () => {
+    try {
+      const cabecera = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+      };
+      const respuesta = await fetch(
+        "https://rolling-news-servidor.herokuapp.com/api/categoria",
+        cabecera
+      );
+      const resultado = await respuesta.json();
+      setCategoriasAPI(resultado);
+      console.log(resultado);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  try {
-    const cabecera = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("token"),
-      },
-      body: JSON.stringify(noticia),
+  const onSubmit = async (data, e) => {
+    //Modelo del objeto con el que vamos a trabajar (debe cumplir esta estructura)
+    const noticia = {
+      volantaNoticia: data.volantaNoticia,
+      tituloPrincipalNoticia: data.tituloPrincipalNoticia,
+      copeteNoticia: data.copeteNoticia,
+      urlImgPrincipalNoticia: data.urlImgPrincipalNoticia,
+      cuerpoNoticia: data.cuerpoNoticia,
+      urlImgOpcionalNoticia: data.urlImgOpcionalNoticia,
+      autorNoticia: data.autorNoticia,
+      categoriaNoticia: data.categoriaNoticia,
+      publicadaNoticia: true,
+      estadoNoticia: true,
     };
 
-    const resultado = await fetch(
-      "http://localhost:4000/api/noticia/",
-      cabecera
-    );
-    console.log(resultado);
-    //Compruebo la respuesta
-    if (resultado.status === 200) {
-      Swal.fire(
-        "La noticia creada",
-        "La noticia se creo correctamente",
-        "success"
+    try {
+      const cabecera = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+        body: JSON.stringify(noticia),
+      };
+
+      const resultado = await fetch(
+        "https://rolling-news-servidor.herokuapp.com/api/noticia/",
+        cabecera
       );
+      console.log(resultado);
+      //Compruebo la respuesta
+      if (resultado.status === 200) {
+        Swal.fire(
+          "La noticia creada",
+          "La noticia se creo correctamente",
+          "success"
+        );
+      }
+      //redireccionar
+      // browserHistory.push("/admin/categorias");
+      // props.history.push("/admin/categorias");
+      console.log();
+    } catch (error) {
+      console.log(error);
     }
-    //redireccionar
-    // browserHistory.push("/admin/categorias");
-    // props.history.push("/admin/categorias");
-    console.log();
-  } catch (error) {
-    console.log(error);
-  }
-  e.target.reset();
-};
-
-
+    e.target.reset();
+  };
 
   return (
     <Fragment>
@@ -272,35 +297,25 @@ const NuevaNoticia = () => {
                 {errors?.autorNoticia?.message}
               </span>
             </Form.Group>
+
             <Form.Group controlId="categoriaNoticia">
               <Form.Label>Categoria</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Deportes"
+                as="select"
+                defaultValue="Seleccione..."
                 name="categoriaNoticia"
                 ref={register({
-                  required: {
-                    value: true,
-                    message: "Ingrese una categoria",
-                  },
-                  maxLength: {
-                    value: 20,
-                    message: "No más de 20 carácteres!",
-                  },
-                  minLength: {
-                    value: 3,
-                    message: "Mínimo 3 carácteres",
-                  },
-                  pattern: {
-                    value: /^[A-Za-z\s]+$/g,
-                    message: "Ingrese solo texto",
-                  },
+                  required: true,
                 })}
-              />
-              <span id="errorCategoria" className="text-danger mb-2">
-                {errors?.categoriaNoticia?.message}
-              </span>
+              >
+                {categoriasAPI.map((categoria) => (
+                  <option value={categoria.nombreCat} key={categoria._id}>
+                    {categoria.nombreCat}
+                  </option>
+                ))}
+              </Form.Control>
             </Form.Group>
+
             <Form.Group controlId="publicadaNoticia">
               <Form.Label>Fecha de publicación</Form.Label>
               <Form.Control

@@ -24,7 +24,7 @@ const LineaNoticia = (props) => {
         //Elimino la categoria
         try {
           const resultado = await fetch(
-            `http://localhost:4000/api/noticia/${id}`,
+            `https://rolling-news-servidor.herokuapp.com/api/noticia/${id}`,
             {
               method: "DELETE",
               headers: {

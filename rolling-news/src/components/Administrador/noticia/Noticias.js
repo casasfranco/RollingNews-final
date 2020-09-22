@@ -30,7 +30,7 @@ const Noticias = () => {
         // body: JSON.stringify({token:localStorage.getItem('token')}),
       };
       const respuesta = await fetch(
-        `http://localhost:4000/api/noticia/`,
+        `https://rolling-news-servidor.herokuapp.com/api/noticia/`,
         cabecera
       );
       const resultado = await respuesta.json();

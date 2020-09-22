@@ -12,6 +12,7 @@ import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/logo-rolling.png"; // relative path to image
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import auth from '../auth'
 
 const Barra = () => {
   const [show, setShow] = useState(false);
@@ -45,7 +46,10 @@ const Barra = () => {
         })
         .then((response) => {
           if (response.ok) {
-            localStorage.setItem("token", response.token);
+            
+            auth.login(() => {
+              localStorage.setItem("token", response.token);
+            })
             Swal.fire(
               "Bienvenido!!!",
               "Iniciaste sesion correctamente",
