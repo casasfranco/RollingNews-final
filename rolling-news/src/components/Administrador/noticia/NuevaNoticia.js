@@ -5,11 +5,44 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
-const NuevaNoticia = () => {
-  const { register, errors, handleSubmit } = useForm();
+const NuevaNoticia = (props) => {
+  // const [editar, setEditar] = useState(false);
+  let editar = false;
+  const location = useLocation();
+  let _noticia;
+  //Controlo si hay valores (estoy en editar)
+  if (location.state !== undefined) {
+    let fechaAct = location.state.noticia.updatedAt;
+    _noticia = {
+      idNoticia: location.state.noticia._id,
+      volantaNoticia: location.state.noticia.volantaNoticia,
+      tituloPrincipalNoticia: location.state.noticia.tituloPrincipalNoticia,
+      copeteNoticia: location.state.noticia.copeteNoticia,
+      urlImgPrincipalNoticia: location.state.noticia.urlImgPrincipalNoticia,
+      cuerpoNoticia: location.state.noticia.cuerpoNoticia,
+      urlImgOpcionalNoticia: location.state.noticia.urlImgOpcionalNoticia,
+      autorNoticia: location.state.noticia.autorNoticia,
+      categoriaNoticia: location.state.noticia.categoriaNoticia,
+      updatedAt:
+        fechaAct.slice(8, -14) +
+        "/" +
+        fechaAct.slice(5, -17) +
+        "/" +
+        fechaAct.slice(0, -20),
+      publicadaNoticia: true,
+      estadoNoticia: true,
+    };
+    editar = true;
+  }
+
+  const { register, errors, handleSubmit } = useForm({
+    defaultValues: _noticia,
+  });
   const [categoriasAPI, setCategoriasAPI] = useState([]);
   const [cargarCategorias, setCargarCategorias] = useState(true);
+
   useEffect(() => {
     if (cargarCategorias) {
       consultarCategoriasAPI();
@@ -53,37 +86,72 @@ const NuevaNoticia = () => {
       estadoNoticia: true,
     };
 
-    try {
-      const cabecera = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
-        },
-        body: JSON.stringify(noticia),
-      };
+    if (editar) {
+      console.log(props.idNoticia);
+      try {
+        const cabecera = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
+          },
+          body: JSON.stringify(noticia),
+        };
 
-      const resultado = await fetch(
-        "https://rolling-news-servidor.herokuapp.com/api/noticia/",
-        cabecera
-      );
-      console.log(resultado);
-      //Compruebo la respuesta
-      if (resultado.status === 200) {
-        Swal.fire(
-          "La noticia creada",
-          "La noticia se creo correctamente",
-          "success"
+        const resultado = await fetch(
+          `https://rolling-news-servidor.herokuapp.com/api/noticia/${props.idNoticia}`,
+          cabecera
         );
+        console.log(resultado);
+        //Compruebo la respuesta
+        if (resultado.status === 200) {
+          Swal.fire(
+            "La noticia creada",
+            "La noticia se actualizo correctamente",
+            "success"
+          );
+        }
+        //redireccionar
+        // browserHistory.push("/admin/categorias");
+        // props.history.push("/admin/categorias");
+        console.log();
+      } catch (error) {
+        console.log(error);
       }
-      //redireccionar
-      // browserHistory.push("/admin/categorias");
-      // props.history.push("/admin/categorias");
-      console.log();
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        const cabecera = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
+          },
+          body: JSON.stringify(noticia),
+        };
+
+        const resultado = await fetch(
+          "https://rolling-news-servidor.herokuapp.com/api/noticia/",
+          cabecera
+        );
+        console.log(resultado);
+        //Compruebo la respuesta
+        if (resultado.status === 200) {
+          Swal.fire(
+            "La noticia creada",
+            "La noticia se creo correctamente",
+            "success"
+          );
+        }
+        //redireccionar
+        // browserHistory.push("/admin/categorias");
+        // props.history.push("/admin/categorias");
+        console.log();
+      } catch (error) {
+        console.log(error);
+      }
+      e.target.reset();
     }
-    e.target.reset();
+    editar=false;
   };
 
   return (
@@ -106,14 +174,13 @@ const NuevaNoticia = () => {
                     message: "Ingrese un antetitulo",
                   },
                   maxLength: {
-                    value: 40,
+                    value: 80,
                     message: "No más de 40 carácteres",
                   },
                   minLength: {
                     value: 5,
                     message: "Mínimo 5 carácteres",
                   },
-                  
                 })}
               />
               <span id="errorVolanta" className="text-danger mb-2">
@@ -132,14 +199,13 @@ const NuevaNoticia = () => {
                     message: "Ingrese un titulo",
                   },
                   maxLength: {
-                    value: 60,
+                    value: 100,
                     message: "No más de 60 carácteres",
                   },
                   minLength: {
                     value: 5,
                     message: "Mínimo 5 carácteres",
                   },
-                  
                 })}
               />
               <span id="errorTitulo" className="text-danger mb-2">
@@ -165,7 +231,6 @@ const NuevaNoticia = () => {
                     value: 10,
                     message: "Mínimo 10 carácteres",
                   },
-                  
                 })}
               />
               <span id="errorCopete" className="text-danger mb-2">
@@ -221,7 +286,6 @@ const NuevaNoticia = () => {
                     value: 3,
                     message: "Mínimo 3 carácteres",
                   },
-                  
                 })}
               />
               <span id="errorCuerpoNoticia" className="text-danger mb-2">
@@ -304,12 +368,12 @@ const NuevaNoticia = () => {
               </Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="publicadaNoticia">
+            <Form.Group controlId="updatedAt">
               <Form.Label>Fecha de publicación</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="22/09/2020"
-                name="publicadaNoticia"
+                name="updatedAt"
                 ref={register({
                   required: {
                     value: true,

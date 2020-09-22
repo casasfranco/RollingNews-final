@@ -29,9 +29,7 @@ function App() {
   //Noticias
   const [noticiasAPI, setNoticiasAPI] = useState([]);
 
-
   useEffect(() => {
-    
     consultarNoticiasAPI();
 
     if (recargarMonedas) {
@@ -49,11 +47,6 @@ function App() {
       setRecargarClima(false);
     }
   }, [recargarMonedas, recargarMonedasDetalle]);
-
-
-
-
-  
 
   // useEffect(() => {
   //   if (recargarNoticias) {
@@ -82,15 +75,6 @@ function App() {
       console.log(error);
     }
   };
-
-
-
-
-
-
-
-
-
 
   const consultarMonedasAPI = async () => {
     try {
@@ -201,7 +185,10 @@ function App() {
           <Titular></Titular>
           <Comentarios></Comentarios>
         </Route>
-        <Route exact path="/" render={() => (
+        <Route
+          exact
+          path="/"
+          render={() => (
             <div>
               <Principal noticiasAPI={noticiasAPI}></Principal>
               {/* <ListaProductos
@@ -210,7 +197,8 @@ function App() {
               ></ListaProductos>
               <Paginacion consultarAPI={consultarAPI} totalPaginas={totalPaginas} paginaActual={parseInt(paginaActual)}></Paginacion> */}
             </div>
-          )}>
+          )}
+        >
           {/* <div className="container">
         <div className="row justify-content-center">
           <Cargar datos={monedasDetalleAPI} />
@@ -218,7 +206,6 @@ function App() {
         </div>
       </div>
       <CargarClima clima={climaAPI} /> */}
-          
         </Route>
 
         <Route exact path="/admin">
@@ -246,8 +233,15 @@ function App() {
           <Suscripcion></Suscripcion>
         </Route>
 
-        <Route exact path="/admin/usuarios/:id">
-          <Suscripcion></Suscripcion>
+        <Route exact path="/admin/usuarios/:id"render={(props) => {
+          //Obtener id de la url
+          const idUsuario = props.match.params.id;
+          return (
+            <Suscripcion
+            idUsuario={idUsuario}
+            ></Suscripcion>
+          );
+        }}>
         </Route>
 
         <Route exact path="/admin/noticias">
@@ -256,6 +250,20 @@ function App() {
 
         <Route exact path="/admin/noticias/nueva">
           <NuevaNoticia></NuevaNoticia>
+        </Route>
+
+        <Route exact path="/admin/noticias/:id"
+        render={(props) => {
+          //Obtener id de la url
+          const idNoticia = props.match.params.id;
+          
+          return (
+            <NuevaNoticia
+            idNoticia={idNoticia}
+            ></NuevaNoticia>
+          );
+        }}>
+          
         </Route>
 
         <Route exact path="/error404">

@@ -2,6 +2,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 //Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -68,13 +69,12 @@ const LineaNoticia = (props) => {
           </div>
         </div>
         <div className="d-flex align-items-center">
-          <Button
-            className="mx-2"
-            variant="warning"
-            //onClick={() => editarNoticia(props.noticia._id)}
+        <Link
+            className="btn btn-warning mx-2"
+            to={{ pathname: `/admin/noticias/${props.noticia._id}`, state: { noticia: props.noticia}}}
           >
             <FontAwesomeIcon icon={faEdit} />
-          </Button>
+          </Link>
           <Button
             variant="danger"
             onClick={() => eliminarNoticia(props.noticia._id)}

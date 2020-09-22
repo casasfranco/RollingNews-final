@@ -9,10 +9,12 @@ import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 
 const Suscripcion = (props) => {
+  let editar = false;
   const [provinciasAPI, setProvinciasAPI] = useState([]);
   const [provinciaSeleccionada, setProvinciaSeleccionada] = useState();
   const [localidadesAPI, setLocalidadesAPI] = useState([]);
   const [cargarLocalidades, setCargarLocalidades] = useState(false);
+
   const location = useLocation();
   //console.log(location.state.usuario);
   let usuario;
@@ -20,6 +22,7 @@ const Suscripcion = (props) => {
   //Controlo si hay valores (estoy en editar)
   if (location.state !== undefined) {
     usuario = location.state.usuario;
+    editar = true;
   }
   const { register, handleSubmit, errors } = useForm({
     defaultValues: usuario,
@@ -32,10 +35,6 @@ const Suscripcion = (props) => {
       setCargarLocalidades(false);
     }
   }, [cargarLocalidades]);
-
-  function prueba(valor) {
-    console.log(valor);
-  }
 
   //Cargo las provincias en el desplegable
   const consultarProvinciasAPI = async () => {
@@ -105,35 +104,64 @@ const Suscripcion = (props) => {
       estadoUsuario: false,
     };
 
-    console.log(usuario);
-
-    try {
-      const cabecera = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
-        },
-        body: JSON.stringify(usuario),
-      };
-
-      const resultado = await fetch(
-        "https://rolling-news-servidor.herokuapp.com/api/usuario/",
-        cabecera
-      );
-      //Compruebo la respuesta
-      if (resultado.status === 200) {
-        Swal.fire(
-          "Gracias!",
-          "Sus datos fueron enviados y pronto nos contactaremos!",
-          "success"
+    if (editar) {
+      try {
+        const cabecera = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
+          },
+          body: JSON.stringify(usuario),
+        };
+  
+        const resultado = await fetch(
+          `https://rolling-news-servidor.herokuapp.com/api/usuario/${props.idUsuario}`,
+          cabecera
         );
+        //Compruebo la respuesta
+        if (resultado.status === 200) {
+          Swal.fire(
+            "Usuario actualizado con exito!",
+            "Los datos del usuario fueron actualizados con exito!",
+            "success"
+          );
+        }
+        //redireccionar
+        // browserHistory.push("/admin/categorias");
+        // props.history.push("/admin/categorias");
+      } catch (error) {
+        console.log(error);
       }
-      //redireccionar
-      // browserHistory.push("/admin/categorias");
-      // props.history.push("/admin/categorias");
-    } catch (error) {
-      console.log(error);
+    } else{
+      try {
+        const cabecera = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
+          },
+          body: JSON.stringify(usuario),
+        };
+  
+        const resultado = await fetch(
+          "https://rolling-news-servidor.herokuapp.com/api/usuario/",
+          cabecera
+        );
+        //Compruebo la respuesta
+        if (resultado.status === 200) {
+          Swal.fire(
+            "Gracias!",
+            "Sus datos fueron enviados y pronto nos contactaremos!",
+            "success"
+          );
+        }
+        //redireccionar
+        // browserHistory.push("/admin/categorias");
+        // props.history.push("/admin/categorias");
+      } catch (error) {
+        console.log(error);
+      }
     }
     e.target.reset();
   };
@@ -340,7 +368,7 @@ const Suscripcion = (props) => {
             )}
           </Form.Group>
 
-          <Button variant="primary" className="w-100 p-3" type="submit">
+          <Button variant="primary" className="w-100 p-3 my-4" type="submit">
             <h3>Enviar Datos</h3>
           </Button>
         </Form>
