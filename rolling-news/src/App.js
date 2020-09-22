@@ -119,12 +119,12 @@ function App() {
   function Cargar(props) {
     if (props.datos !== undefined) {
       return monedasAPI.map((moneda, index) => (
-          <Criptomonedas
-            moneda={moneda}
-            key={moneda.name}
-            detallesMoneda={props.datos[index]}
-            setRecargarMonedasDetalle={setRecargarMonedasDetalle}
-          ></Criptomonedas>
+        <Criptomonedas
+          moneda={moneda}
+          key={moneda.name}
+          detallesMoneda={props.datos[index]}
+          setRecargarMonedasDetalle={setRecargarMonedasDetalle}
+        ></Criptomonedas>
       ));
     }
     return "chau";
@@ -132,11 +132,7 @@ function App() {
 
   function CargarClima(props) {
     if (props.clima != undefined) {
-      return (
-        <Clima
-          detallesClima={props.clima}
-        ></Clima>
-      );
+      return <Clima detallesClima={props.clima}></Clima>;
     }
     return "chau";
   }
@@ -145,33 +141,32 @@ function App() {
     <Router>
       <Barra></Barra>
       <Switch>
-      <Route exact path="/hola">
-      <div className="container">
-        <div className="row justify-content-center">
-          <Cargar datos={monedasDetalleAPI} />
-          {/* <Clima></Clima> */}
-        </div>
-      </div>
-      <CargarClima clima={climaAPI} />
+        <Route exact path="/hola">
+          {/* <div className="container">
+            <div className="row justify-content-center">
+              <Cargar datos={monedasDetalleAPI} />
+              <Clima></Clima>
+            </div>
+          </div>
+          <CargarClima clima={climaAPI} /> */}
 
           <Titular></Titular>
           <Comentarios></Comentarios>
-          </Route>
+        </Route>
         <Route exact path="/">
-        <div className="container">
+          {/* <div className="container">
         <div className="row justify-content-center">
           <Cargar datos={monedasDetalleAPI} />
-          {/* <Clima></Clima> */}
+           <Clima></Clima> 
         </div>
       </div>
-      <CargarClima clima={climaAPI} />
+      <CargarClima clima={climaAPI} /> */}
           <Principal></Principal>
         </Route>
 
         <Route exact path="/admin">
           <Bienvenida></Bienvenida>
         </Route>
-
 
         <Route
           exact
@@ -181,8 +176,7 @@ function App() {
               <Categoria></Categoria>
             </div>
           )}
-        >
-</Route>
+        ></Route>
         <Route exact path="/admin/categorias/nueva">
           <CategoriaNueva></CategoriaNueva>
         </Route>

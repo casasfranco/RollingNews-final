@@ -81,8 +81,8 @@ const NuevaNoticia = () => {
                     message: "Ingrese un antetitulo",
                   },
                   maxLength: {
-                    value: 15,
-                    message: "No más de 15 carácteres",
+                    value: 20,
+                    message: "No más de 20 carácteres",
                   },
                   minLength: {
                     value: 5,
@@ -139,8 +139,8 @@ const NuevaNoticia = () => {
                     message: "Agregue una descripción",
                   },
                   maxLength: {
-                    value: 150,
-                    message: "No más de 150 carácteres",
+                    value: 250,
+                    message: "No más de 250 carácteres",
                   },
                   minLength: {
                     value: 10,
@@ -168,12 +168,12 @@ const NuevaNoticia = () => {
                     message: "Agregue una imagen de principal",
                   },
                   maxLength: {
-                    value: 100,
-                    message: "No más de 100 carácteres",
+                    value: 200,
+                    message: "No más de 200 carácteres",
                   },
                   minLength: {
                     value: 3,
-                    message: "Mínimo 5 carácteres",
+                    message: "Mínimo 3 carácteres",
                   },
                 })}
               />
@@ -203,7 +203,7 @@ const NuevaNoticia = () => {
                   },
                   minLength: {
                     value: 3,
-                    message: "Mínimo 5 carácteres",
+                    message: "Mínimo 3 carácteres",
                   },
                   pattern: {
                     value: /^[A-Za-z0-9\s]+$/g,
@@ -227,12 +227,12 @@ const NuevaNoticia = () => {
                     message: "Agregue una imagen de opcional",
                   },
                   maxLength: {
-                    value: 100,
-                    message: "No más de 100 carácteres!",
+                    value: 200,
+                    message: "No más de 200 carácteres!",
                   },
                   minLength: {
                     value: 3,
-                    message: "Mínimo 5 carácteres",
+                    message: "Mínimo 3 carácteres",
                   },
                 })}
               />
@@ -260,7 +260,7 @@ const NuevaNoticia = () => {
                   },
                   minLength: {
                     value: 3,
-                    message: "Mínimo 5 carácteres",
+                    message: "Mínimo 3 carácteres",
                   },
                   pattern: {
                     value: /^[A-Za-z\s]+$/g,
@@ -289,7 +289,7 @@ const NuevaNoticia = () => {
                   },
                   minLength: {
                     value: 3,
-                    message: "Mínimo 5 carácteres",
+                    message: "Mínimo 3 carácteres",
                   },
                   pattern: {
                     value: /^[A-Za-z\s]+$/g,

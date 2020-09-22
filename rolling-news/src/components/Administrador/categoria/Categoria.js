@@ -14,7 +14,6 @@ const Categoria = () => {
       consultarAPI();  
       setRecargarCategorias(false);
     }
-    consultarAPI();
   }, [recargarCategorias]);
 
   const consultarAPI = async () => {
