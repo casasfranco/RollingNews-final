@@ -34,7 +34,7 @@ const Criptomonedas = (props) => {
             className="criptoImg"
             src={props.moneda.icon_url}
           />
-          
+          <Cargar></Cargar>
         </Card.Body>
       </Card>
     </Fragment>
