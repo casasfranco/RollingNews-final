@@ -16,7 +16,7 @@ const Comentarios = () => {
 
       <Fragment>
         <div
-          class="fb-comments"
+          className="fb-comments"
           data-href="https://web.facebook.com/RollingCodeSchool"
           data-numposts="5"
           data-width=""

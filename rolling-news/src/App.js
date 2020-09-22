@@ -141,7 +141,7 @@ function App() {
     <Router>
       <Barra></Barra>
       <Switch>
-        <Route exact path="/hola">
+        <Route exact path="/noticia/:id">
           {/* <div className="container">
             <div className="row justify-content-center">
               <Cargar datos={monedasDetalleAPI} />

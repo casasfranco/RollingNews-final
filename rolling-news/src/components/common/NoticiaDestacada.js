@@ -18,7 +18,7 @@ const NoticiaDestacada = (props) => {
           {props.noticia.copeteNoticia}
           </Card.Text>
         </Card.Body>
-        <Link href="#" className=" text-dark font-italic mx-2 my-3">
+        <Link className=" text-dark font-italic mx-2 my-3" to={{ pathname: `/noticia/${props.noticia._id}`, state: { noticia: props.noticia}}}>
           {" "}
           Leer mas...
         </Link>
