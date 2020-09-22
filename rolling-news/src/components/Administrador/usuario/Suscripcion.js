@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
@@ -6,29 +6,107 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { useLocation } from "react-router-dom";
 
-const Suscripcion = () => {
-  const { register, handleSubmit, errors } = useForm();
+const Suscripcion = (props) => {
+  const [provinciasAPI, setProvinciasAPI] = useState([]);
+  const [provinciaSeleccionada, setProvinciaSeleccionada] = useState();
+  const [localidadesAPI, setLocalidadesAPI] = useState([]);
+  const [cargarLocalidades, setCargarLocalidades] = useState(false);
+  const location = useLocation();
+  //console.log(location.state.usuario);
+  let usuario;
 
+  //Controlo si hay valores (estoy en editar)
+  if (location.state !== undefined) {
+    usuario = location.state.usuario;
+  }
+  const { register, handleSubmit, errors } = useForm({
+    defaultValues: usuario,
+  });
+
+  useEffect(() => {
+    consultarProvinciasAPI();
+    if (cargarLocalidades) {
+      consultarLocalidadesAPI();
+      setCargarLocalidades(false);
+    }
+  }, [cargarLocalidades]);
+
+  function prueba(valor) {
+    console.log(valor);
+  }
+
+  //Cargo las provincias en el desplegable
+  const consultarProvinciasAPI = async () => {
+    try {
+      const cabecera = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify({token:localStorage.getItem('token')}),
+      };
+      const respuesta = await fetch(
+        `https://apis.datos.gob.ar/georef/api/provincias`,
+        cabecera
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then((response) => {
+          setProvinciasAPI(response.provincias);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Cargo las localidades en el desplegable
+  const consultarLocalidadesAPI = async () => {
+    try {
+      const cabecera = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify({token:localStorage.getItem('token')}),
+      };
+      const respuesta = await fetch(
+        `https://apis.datos.gob.ar/georef/api/localidades?provincia=${provinciaSeleccionada}&campos=id&max=500`,
+        cabecera
+      )
+      .then(function (response) {
+        return response.json();
+      })
+      .then((response) => {
+        setLocalidadesAPI(response.localidades);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onSubmit = async (data, e) => {
+    // console.log(data);
+    // console.log(data.provinciaUsuario);
     const usuario = {
       nombre: data.nombre,
       apellido: data.apellido,
       nombreUsuario: data.nombreUsuario,
       passUsuario: data.passUsuario,
+      emailUsuario: data.emailUsuario,
       direccionUsuario: data.direccionUsuario,
-      provinciaUsuario: 'data.provinciaUsuario',
-      localidadUsuario: 'data.localidadUsuario',
+      provinciaUsuario: data.provinciaUsuario,
+      localidadUsuario: data.localidadUsuario,
       cpUsuario: data.cpUsuario,
       numTelefonoUsuario: data.numTelefonoUsuario,
-      perfilUsuario: 'publico',
+      perfilUsuario: "publico",
       estadoUsuario: false,
-    }
+    };
 
     console.log(usuario);
 
-    
     try {
       const cabecera = {
         method: "POST",
@@ -38,7 +116,7 @@ const Suscripcion = () => {
         },
         body: JSON.stringify(usuario),
       };
-     
+
       const resultado = await fetch(
         "https://rolling-news-servidor.herokuapp.com/api/usuario/",
         cabecera
@@ -50,7 +128,6 @@ const Suscripcion = () => {
           "Sus datos fueron enviados y pronto nos contactaremos!",
           "success"
         );
-     
       }
       //redireccionar
       // browserHistory.push("/admin/categorias");
@@ -60,8 +137,6 @@ const Suscripcion = () => {
     }
     e.target.reset();
   };
-
- 
 
   return (
     <div>
@@ -173,10 +248,19 @@ const Suscripcion = () => {
               as="select"
               defaultValue="Seleccione..."
               name="provinciaUsuario"
-              
+              ref={register({
+                required: true,
+              })}
+              onChange={(e) => {
+                setProvinciaSeleccionada(e.target.value);
+                setCargarLocalidades(true);
+              }}
             >
-              <option>Seleccione...</option>
-              <option value="123">...</option>
+              {provinciasAPI.map((provincia) => (
+                <option value={provincia.nombre} key={provincia.id}>
+                  {provincia.nombre}
+                </option>
+              ))}
             </Form.Control>
           </Form.Group>
 
@@ -186,9 +270,15 @@ const Suscripcion = () => {
               as="select"
               defaultValue="Seleccione..."
               name="localidadUsuario"
+              ref={register({
+                required: true,
+              })}
             >
-              <option>Seleccione...</option>
-              <option value="321">...</option>
+              {localidadesAPI.map((localidad) => (
+                <option value={localidad.nombre} key={localidad.id}>
+                  {localidad.nombre}
+                </option>
+              ))}
             </Form.Control>
           </Form.Group>
 
@@ -232,18 +322,18 @@ const Suscripcion = () => {
             )}
           </Form.Group>
 
-          <Form.Group controlId="Email">
+          <Form.Group controlId="emailUsuario">
             <Form.Label>Correo Electronico</Form.Label>
             <Form.Control
               type="email"
               placeholder="juanperez@hotmail.com"
-              name="correo"
+              name="emailUsuario"
               ref={register({
                 required: true,
                 pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i },
               })}
             />
-            {errors.correo && (
+            {errors.emailUsuario && (
               <Alert variant={"danger"} className="p-1">
                 ⚠ Requiere su Correo!
               </Alert>

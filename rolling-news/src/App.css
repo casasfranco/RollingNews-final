@@ -1,15 +1,13 @@
-#logo {
-  width: 300px;
-  height: 140px;
-}
 #logo-login {
   width: 200px;
   height: 120px;
   opacity: 0.5;
 }
+
 #errorlogin {
   font-size: 12px;
 }
+
 /* 404 Error  */
 #oopss {
   background: rgb(212, 3, 3);
@@ -22,6 +20,11 @@
   z-index: 9999;
 }
 
+#img-footer{
+  width: 300px;
+  height: 140px;
+}
+
 #texto {
   font-size: 40px;
   display: flex;
@@ -31,16 +34,19 @@
   color: #000;
   direction: rtl;
 }
-img {
+
+#img-barra {
+  width: 300px;
+  height: 140px;
   margin: 85px auto 20px;
-  height: 342px;
 }
-span {
+
+/* span {
   position: relative;
   font-size: 3.3em;
   font-weight: 900;
   margin-bottom: 50px;
-}
+} */
 
 .back {
   background: rgb(235, 15, 15);
@@ -51,4 +57,17 @@ span {
   box-shadow: 0 20px 20px 4px rgba(0, 0, 0, 0.1), inset 7px 33px 0 0px #cfcfcc;
   font-weight: 900;
   transition: all 300ms ease;
+}
+
+.cardCripto{
+  width: 20rem;
+}
+
+.criptoImg{
+  max-width: 3rem;
+  /* align-self: center; */
+}
+.tiempoImg{
+  max-width: 5rem;
+  /* align-self: center; */
 }

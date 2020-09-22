@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
@@ -9,17 +9,16 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import logo from "../../assets/logo-rolling.jpg"; // relative path to image
-import $ from "jquery";
+import logo from "../../assets/logo-rolling.png"; // relative path to image
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Barra = () => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const { register, errors, handleSubmit } = useForm();
+  const [recargarBotones, setRecargarBotones] = useState(false);
 
   const onSubmit = async (data, e) => {
     //Login de los datos validados.
@@ -38,7 +37,7 @@ const Barra = () => {
       };
 
       const resultado = await fetch(
-        "http://localhost:4000/api/autenticar/",
+        "https://rolling-news-servidor.herokuapp.com/api/autenticar/",
         cabecera
       )
         .then(function (response) {
@@ -69,6 +68,52 @@ const Barra = () => {
     // $(document.getElementById("loginModal")).hide();
   };
 
+  function UserAdminButton(props) {
+    return (
+      <Fragment>
+        <Link to="/admin">
+          <Button className="mx-2 shadow" size="sm" variant="info">
+            Administración
+          </Button>
+        </Link>
+        <Button
+          className="mx-2 shadow"
+          size="sm"
+          variant="danger"
+          onClick={cerrarSesion}
+        >
+          Cerrar Sesión
+        </Button>
+      </Fragment>
+    );
+  }
+
+  function LoginButton(props) {
+    return (
+      <Fragment>
+        <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
+          Ingresar
+        </Button>
+        <Button className="mx-2 shadow" size="sm" variant="outline-dark">
+          Suscribirme
+        </Button>
+      </Fragment>
+    );
+  }
+
+  function Admin(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedIn) {
+      return <UserAdminButton />;
+    }
+    return <LoginButton />;
+  }
+
+  function cerrarSesion() {
+    localStorage.removeItem("token");
+    setRecargarBotones(true);
+  }
+
   return (
     <div>
       <Navbar
@@ -77,13 +122,11 @@ const Barra = () => {
         expand="lg"
         className="d-flex justify-content-between align-items-center"
       >
-        <Image id="logo" src={logo} rounded></Image>
+        <Image id="img-barra" src={logo} rounded></Image>
 
         <Nav className="text-center">
-          <Button className="mx-2 shadow" variant="dark" onClick={handleShow}>
-            Ingresar
-          </Button>
-
+          <Admin isLoggedIn={localStorage.getItem("token")} />
+          
           <Modal
             show={show}
             onHide={handleClose}
@@ -163,7 +206,7 @@ const Barra = () => {
                   </span>
                 </Form.Group>
 
-                <Button variant="dark" size="sm" type="submit">
+                <Button variant="dark" type="submit">
                   Ingresar
                 </Button>
               </Form>
@@ -171,28 +214,26 @@ const Barra = () => {
 
             <Modal.Footer className="mx-5">
               <p>Ingresá con tu cuenta</p>
-              <Button variant="primary" size="lg" onClick={handleClose}>
-                <FontAwesomeIcon icon={faFacebook} />
-              </Button>
-              <Button variant="danger" size="lg" onClick={handleClose}>
-                <FontAwesomeIcon icon={faGoogle} />
-              </Button>
+              <Link to={`/error404`}>
+                <Button variant="primary" size="lg" onClick={handleClose}>
+                  <FontAwesomeIcon icon={faFacebook} />
+                </Button>
+              </Link>
+              <Link to={`/error404`}>
+                <Button variant="danger" size="lg" onClick={handleClose}>
+                  <FontAwesomeIcon icon={faGoogle} />
+                </Button>
+              </Link>
             </Modal.Footer>
           </Modal>
-
-          <Button className="mx-2 shadow" size="sm" variant="outline-dark">
-            Suscribirme
-          </Button>
         </Nav>
       </Navbar>
 
-      <hr />
-
       <Navbar expand="lg">
-        <Navbar.Brand href="#home"></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="navbar-nav" className="justify-content-center">
           <Nav className="mx-2">
+          <Nav.Link className="h5">Inicio</Nav.Link>
             <Nav.Link href="#home">Actualidad</Nav.Link>
             <Nav.Link href="#features">Espectáculos</Nav.Link>
             <Nav.Link href="#pricing">Tecnología</Nav.Link>

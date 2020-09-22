@@ -69,7 +69,7 @@ const LineaNoticia = (props) => {
         </div>
         <div className="d-flex align-items-center">
           <Button
-            className="mx-3"
+            className="mx-2"
             variant="warning"
             //onClick={() => editarNoticia(props.noticia._id)}
           >
