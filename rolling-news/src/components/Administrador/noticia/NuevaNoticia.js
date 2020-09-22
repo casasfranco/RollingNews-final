@@ -106,8 +106,8 @@ const NuevaNoticia = () => {
                     message: "Ingrese un antetitulo",
                   },
                   maxLength: {
-                    value: 20,
-                    message: "No más de 20 carácteres",
+                    value: 40,
+                    message: "No más de 40 carácteres",
                   },
                   minLength: {
                     value: 5,
@@ -132,8 +132,8 @@ const NuevaNoticia = () => {
                     message: "Ingrese un titulo",
                   },
                   maxLength: {
-                    value: 30,
-                    message: "No más de 30 carácteres",
+                    value: 60,
+                    message: "No más de 60 carácteres",
                   },
                   minLength: {
                     value: 5,
