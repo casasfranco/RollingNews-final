@@ -16,6 +16,7 @@ import Titular from "./components/principal/Titular";
 import Comentarios from "./components/principal/Comentarios";
 import Criptomonedas from "./components/principal/Criptomonedas";
 import Clima from "./components/principal/Clima";
+import Principal from "./components/common/Principal";
 
 function App() {
   const [monedasAPI, setMonedasAPI] = useState();
@@ -143,6 +144,8 @@ function App() {
   return (
     <Router>
       <Barra></Barra>
+      <Switch>
+      <Route exact path="/hola">
       <div className="container">
         <div className="row justify-content-center">
           <Cargar datos={monedasDetalleAPI} />
@@ -151,15 +154,25 @@ function App() {
       </div>
       <CargarClima clima={climaAPI} />
 
-      <Switch>
-        <Route exact path="/noticia">
           <Titular></Titular>
           <Comentarios></Comentarios>
+          </Route>
+        <Route exact path="/">
+        <div className="container">
+        <div className="row justify-content-center">
+          <Cargar datos={monedasDetalleAPI} />
+          {/* <Clima></Clima> */}
+        </div>
+      </div>
+      <CargarClima clima={climaAPI} />
+          <Principal></Principal>
         </Route>
 
         <Route exact path="/admin">
           <Bienvenida></Bienvenida>
         </Route>
+
+
         <Route
           exact
           path="/admin/categorias"
@@ -168,8 +181,8 @@ function App() {
               <Categoria></Categoria>
             </div>
           )}
-        ></Route>
-
+        >
+</Route>
         <Route exact path="/admin/categorias/nueva">
           <CategoriaNueva></CategoriaNueva>
         </Route>

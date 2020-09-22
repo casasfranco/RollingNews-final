@@ -12,7 +12,10 @@ const Clima = (props) => {
             <Card.Img
             variant="top"
             className="tiempoImg"
-            src={props.detallesClima.current.weather_icons[0]}
+            //Cambiar esta parte -----------------___-
+            //obtener desde la api respuesta.weather.icon
+            //respuesta.weather[0].icon
+            src="http://openweathermap.org/img/wn/09d@2x.png"
           />
           <Card.Text>Nubosidad: {props.detallesClima.current.cloudcover}</Card.Text>
           <Card.Text>Sensacion termica: {props.detallesClima.current.feelslike}</Card.Text>
